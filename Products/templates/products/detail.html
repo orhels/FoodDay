@@ -7,6 +7,12 @@
     <p>Product name: {{ product.name }} </p>
     <p>Price: {{ product.price }} </p>
     <p>Producer: {{ product.producer }} </p>
-    <p>Product types: {{ product.productTypes.all }}</p>
+    <p>Product types:
+        {% for productType in product.productTypes.all %}
+            {{ productType }}
+            {% if not forloop.last %} , {% endif %}
+        {% endfor %}
+    </p>
+    <p> Price for mass: {{ product.pretty_price_per_mass }}</p>
 </body>
 </html>
