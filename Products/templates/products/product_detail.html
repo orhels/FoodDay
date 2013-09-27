@@ -7,7 +7,7 @@
     <p>Product name: {{ product.name }} </p>
     <p>Description; {{ product.description }}</p>
     <p>Price: {{ product.price }} </p>
-    <p>Producer: {{ product.producer }} </p>
+    <p>Producer: <a href="{% url 'producer_detail' product.producer.id %}">{{ product.producer }}</a> </p>
     <p>Product types:
         {% for productType in product.productTypes.all %}
             <a href="{% url 'product_type_detail' productType.id %}"> {{ productType }} </a>
