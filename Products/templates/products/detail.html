@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <p>Product name: {{ product.name }} </p>
     <p>Price: {{ product.price }} </p>
     <p>Producer: {{ product.producer }} </p>
@@ -14,5 +11,4 @@
         {% endfor %}
     </p>
     <p> Price for mass: {{ product.pretty_price_per_mass }}</p>
-</body>
-</html>
+{% endblock content %}
