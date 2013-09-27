@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <h2> {{ producer.name }}</h2>
+    <ul>
+        {% for product in producer.product_set.all %}
+            <li><a href="{% url 'product_detail' product.id %}"> {{ product.name }} </a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

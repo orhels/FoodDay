@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <ul>
+        {% for product_type in product_type_list %}
+            <li><a href="{% url 'product_type_detail' product_type.id %}"> {{ product_type.name }} </a> </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
