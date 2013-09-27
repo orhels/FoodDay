@@ -29,24 +29,23 @@ class Product(models.Model):
 
     def normalized_mass_unit(self):
         """ Returns a tuple with (0.5,  KILOGRAM)"""
-        if(self.massUnit == self.GRAM):
-            return (self.mass/1000, self.KILOGRAM)
-        elif (self.massUnit == self.DESILITER):
-            return (self.mass/10, self.LITER)
-        elif (self.massUnit == self.MILLILITER):
-            return (self.mass/1000, self.LITER)
+        if self.massUnit == self.GRAM:
+            return self.mass/1000, self.KILOGRAM
+        elif self.massUnit == self.DESILITER:
+            return self.mass/10, self.LITER
+        elif self.massUnit == self.MILLILITER:
+            return self.mass/1000, self.LITER
         else:
-            return (self.mass, self.massUnit)
+            return self.mass, self.massUnit
 
     def price_per_mass(self):
         """ """
         mass, unit = self.normalized_mass_unit()
-        return (self.price/mass, unit)
+        return self.price/mass, unit
 
     def pretty_price_per_mass(self):
-        price, unit = self.price_per_mass()
-        return u'{price} kr/{unit}'.format(price=price, unit=unit)
-
+        price_mass, unit = self.price_per_mass()
+        return u'{price} kr/{unit}'.format(price=price_mass, unit=unit)
 
 
 class Producer(models.Model):
