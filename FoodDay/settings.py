@@ -1,5 +1,11 @@
 # Django settings for FoodDay project.
 
+# Setting paths for future reference
+from unipath import Path
+PROJECT_ROOT_PATH = Path(__file__).parent
+
+
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
