@@ -10,7 +10,7 @@
     <p>Producer: {{ product.producer }} </p>
     <p>Product types:
         {% for productType in product.productTypes.all %}
-            {{ productType }}
+            <a href="{% url 'product_type_detail' productType.id %}"> {{ productType }} </a>
             {% if not forloop.last %} , {% endif %}
         {% endfor %}
     </p>
