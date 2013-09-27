@@ -2,8 +2,7 @@
 
 # Setting paths for future reference
 from unipath import Path
-PROJECT_ROOT_PATH = Path(__file__).parent
-
+PROJECT_ROOT_PATH = Path(__file__).parent.parent
 
 
 DEBUG = True
@@ -67,7 +66,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = 'static'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -78,7 +77,9 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    PROJECT_ROOT_PATH.child('static').child('bootstrap').child('dist'),
 )
+
 
 # List of finder classes that know how to find static files in
 # various locations.
