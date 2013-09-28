@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>FoodDay {% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
@@ -12,10 +12,23 @@
       <script src="{% static 'docs-assets/js/html5shiv.js' %}"></script>
       <script src="{% static 'docs-assets/js/respond.min.js' %}"></script>
     <![endif]-->
-  </head>
-  <body>
-    {% block content %}{% endblock content %}
-    <script src="//code.jquery.com/jquery.js"></script>
-    <script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
-  </body>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">FoodDay</a>
+    </div>
+
+</nav>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+
+
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
+</body>
 </html>

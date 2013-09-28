@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-    <p>Product name: {{ product.name }} </p>
-    <p>Description; {{ product.description }}</p>
-    <p>Price: {{ product.price }} </p>
-    <p>Producer: <a href="{% url 'producer_detail' product.producer.id %}">{{ product.producer }}</a> </p>
-    <p>Product types:
-        {% for productType in product.productTypes.all %}
-            {{ productType }}
-            <a href="{% url 'product_type_detail' productType.id %}"> {{ productType }} </a>            
-            {% if not forloop.last %} , {% endif %}
-        {% endfor %}
-    </p>
-    <p> Price for mass: {{ product.pretty_price_per_mass }}</p>
-    <p> Vegetarian: {{ product.vegetarian }}</p>
-    <p> Vegan: {{ product.vegan }}</p>
-</body>
-</html>{% endblock content %}
+{% extends 'base.html' %}
+{% block content %}
+<p>Product name: {{ product.name }} </p>
+<p>Description; {{ product.description }}</p>
+<p>Price: {{ product.price }} </p>
+<p>Producer: <a href="{% url 'producer_detail' product.producer.id %}">{{ product.producer }}</a></p>
+<p>Product types:
+    {% for productType in product.productTypes.all %}
+        {{ productType }}
+        <a href="{% url 'product_type_detail' productType.id %}"> {{ productType }} </a>
+        {% if not forloop.last %} , {% endif %}
+    {% endfor %}
+</p>
+<p> Price for mass: {{ product.pretty_price_per_mass }}</p>
+<p> Vegetarian: {{ product.vegetarian }}</p>
+<p> Vegan: {{ product.vegan }}</p>
+{% endblock content %}
