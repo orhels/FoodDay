@@ -114,8 +114,10 @@ ROOT_URLCONF = 'FoodDay.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'FoodDay.wsgi.application'
 
-import os
-TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
+TEMPLATE_DIRS = (PROJECT_ROOT_PATH.child('templates'),
+                 PROJECT_ROOT_PATH.child('Misc').child('templates'),
+                 PROJECT_ROOT_PATH.child('Products').child('templates'),
+                 PROJECT_ROOT_PATH.child('Recipies').child('templates'),)
 
 INSTALLED_APPS = (
     'django.contrib.auth',

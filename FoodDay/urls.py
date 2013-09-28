@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 
 from Products.views import ProductDetailView, ProductIndexView, ProductTypeDetailView, ProductTypeIndexView, \
     ProducerIndexView, ProducerDetailView
+from Misc.views import FrontPageView
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -10,9 +11,9 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'FoodDay.views.home', name='home'),
-    # url(r'^FoodDay/', include('FoodDay.foo.urls')),
+
+    # FRONT PAGE
+    url(r'^$', FrontPageView.as_view(), name='frontpage'),
 
     # PRODUCT
     url(r'^product/$', ProductIndexView.as_view(), name='product_list'),

@@ -4,7 +4,7 @@ from Products.models import Product, ProductType, Producer
 
 
 class ProductIndexView(generic.ListView):
-    template_name = "products/product_index.html"
+    template_name = 'product_index.html'
     context_object_name = "product_list"
 
     def get_queryset(self):
@@ -13,11 +13,11 @@ class ProductIndexView(generic.ListView):
 
 class ProductDetailView(generic.DetailView):
     model = Product
-    template_name = "products/product_detail.html"
+    template_name = 'product_detail.html'
 
 
 class ProducerIndexView(generic.ListView):
-    template_name = "products/producer_index.html"
+    template_name = 'producer_index.html'
     context_object_name = "producer_list"
 
     def get_queryset(self):
@@ -26,11 +26,11 @@ class ProducerIndexView(generic.ListView):
 
 class ProducerDetailView(generic.DetailView):
     model = Producer
-    template_name = 'products/producer_detail.html'
+    template_name = 'producer_detail.html'
 
 
 class ProductTypeIndexView(generic.ListView):
-    template_name = "products/product_type_index.html"
+    template_name = 'product_type_index.html'
     context_object_name = 'product_type_list'
 
     def get_queryset(self):
@@ -39,4 +39,4 @@ class ProductTypeIndexView(generic.ListView):
 
 class ProductTypeDetailView(generic.DetailView):
     model = ProductType
-    template_name = "products/product_type_detail.html"
+    template_name = 'product_type_detail.html'
