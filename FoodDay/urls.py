@@ -23,8 +23,8 @@ urlpatterns = patterns('',
     url(r'^producer/(?P<pk>\d+)/$', ProducerDetailView.as_view(), name='producer_detail'),
 
     # PRODUCT_TYPE
-    url(r'^productType/$', ProductTypeIndexView.as_view(), name='product_type_list'),
-    url(r'^productType/(?P<pk>\d+)/$', ProductTypeDetailView.as_view(), name='product_type_detail'),
+    url(r'^product-category/$', ProductTypeIndexView.as_view(), name='product_type_list'),
+    url(r'^product-category/(?P<pk>\d+)/$', ProductTypeDetailView.as_view(), name='product_type_detail'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
