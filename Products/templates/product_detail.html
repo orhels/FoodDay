@@ -6,25 +6,34 @@
     <div class="row">
         <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
 
-            <h1 class="text-center">{{ product.name }}</h1>
+            <div class="text-center">
+                <h1 class="text-center">{{ product.name }}</h1>
+                <img src="{{ product.image.url }}"/>
+            </div>
 
             <div class="row">
-                <div class="col-lg-offset-4 col-lg-4">
+                <div class="col-lg-offset-4 col-lg-2">
 
-                    <div class="text-right">
+                    <div class="text-left">
                         <h3>{{ product.mass }} {{ product.massUnit }}</h3>
                         <h4>fra {{ product.producer }}</h4>
                     </div>
+                </div>
 
-
-                    <p>{{ product.description }}</p>
-
+                <div class="col-lg-2">
                     <div class="text-right">
                         <h3>{{ product.pretty_price }}</h3>
                         <h6>{{ product.pretty_price_per_mass }}</h6>
                         <button type="button" class="btn btn-success">Kjøp</button>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+
+                <div class="text-center">
+                    <p>{{ product.description }}</p>
+                </div>
+
             </div>
 
 

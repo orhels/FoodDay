@@ -18,6 +18,8 @@ class Product(models.Model):
     massUnit = models.CharField(max_length=150, choices=UNITS)
     vegetarian = models.BooleanField()
     vegan = models.BooleanField()
+    image = models.ImageField(verbose_name='height 400px, width 326px', upload_to='product_images',
+                              default='product_images/product_images_placeholder.png', blank=True)
 
     #Relations
     producer = models.ForeignKey('Producer')

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.conf.urls import patterns, include, url
 
 from Products.views import ProductDetailView, ProductIndexView, ProductTypeDetailView, ProductTypeIndexView, \
@@ -5,6 +6,7 @@ from Products.views import ProductDetailView, ProductIndexView, ProductTypeDetai
 from Misc.views import FrontPageView
 
 # Uncomment the next two lines to enable the admin:
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -35,4 +37,5 @@ urlpatterns = patterns('',
 
 )
 
-urlpatterns += staticfiles_urlpatterns()
+if settings.DEBUG:
+    urlpatterns += staticfiles_urlpatterns() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
