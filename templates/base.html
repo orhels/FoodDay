@@ -1,12 +1,21 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-<head>
-    <title></title>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-</head>
-<body>
-{% block content %}
-{% endblock content %}
-</body>
+  <head>
+    <title>FoodDay {% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{% static 'dist/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="{% static 'docs-assets/js/html5shiv.js' %}"></script>
+      <script src="{% static 'docs-assets/js/respond.min.js' %}"></script>
+    <![endif]-->
+  </head>
+  <body>
+    {% block content %}{% endblock content %}
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
+  </body>
 </html>
