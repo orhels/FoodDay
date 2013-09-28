@@ -1,15 +1,14 @@
 from django.db import models
 
-# Create your models here.
 
 class Product(models.Model):
 
-    KILOGRAM = 'Kilogram'
-    GRAM = 'gram'
-    LITER = 'liter'
-    DESILITER = 'desiliter'
-    MILLILITER = 'milliliter'
-    UNITS = ((KILOGRAM, 'kg'), (GRAM, 'g'), (LITER, 'l'), (DESILITER, 'dl'), (MILLILITER, 'ml'))
+    KILOGRAM = 'kg'
+    GRAM = 'g'
+    LITER = 'l'
+    DESILITER = 'dl'
+    MILLILITER = 'ml'
+    UNITS = ((KILOGRAM, 'kilogram'), (GRAM, 'gram'), (LITER, 'liter'), (DESILITER, 'desiliter'), (MILLILITER, 'milliliter'))
 
     #Fields
     name = models.CharField(max_length=150)
@@ -27,7 +26,7 @@ class Product(models.Model):
     def __unicode__(self):
         return self.name + ' kr.' + str(self.price)
 
-    def normalized_mass_unit(self):
+    def _normalized_mass_unit(self):
         """ Returns a tuple with (0.5,  KILOGRAM)"""
         if self.massUnit == self.GRAM:
             return self.mass/1000, self.KILOGRAM
@@ -38,14 +37,18 @@ class Product(models.Model):
         else:
             return self.mass, self.massUnit
 
-    def price_per_mass(self):
-        """ """
-        mass, unit = self.normalized_mass_unit()
+    def _price_per_mass(self):
+        """ Returns a tuple with (price/weight, unit) """
+        mass, unit = self._normalized_mass_unit()
         return self.price/mass, unit
 
     def pretty_price_per_mass(self):
-        price_mass, unit = self.price_per_mass()
-        return u'{price} kr/{unit}'.format(price=price_mass, unit=unit)
+        """ Returns a string for displaying price per weight unit """
+        price_mass, unit = self._price_per_mass()
+        return u'{:.2f} kr/{unit}'.format(price_mass, unit=unit)
+
+    def pretty_price(self):
+        return u'{price},-'.format(price=self.price)
 
 
 class Producer(models.Model):
