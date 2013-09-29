@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'Recipies',
     'Products',
+    'Cart',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
