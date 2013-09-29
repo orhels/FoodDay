@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2> {{ productcategory.name }}</h2>
+    <ul>
+        <li>
+        Parents:
+        {% for parent in productcategory.parents.all %}
+            {{ parent }}
+            {% if not forloop.last %},{% endif %}
+        {% endfor %}
+        </li>
+        <li>
+        Children:
+        {% for child in productcategory.children.all %}
+            {{ child }}
+            {% if not forloop.last %},{% endif %}
+        {% endfor %}
+        </li>
+        {% for product in productcategory.product_set.all %}
+            <li><a href="{% url 'product_detail' product.id %}"> {{ product.name }} </a></li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

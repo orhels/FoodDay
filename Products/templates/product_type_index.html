@@ -1,8 +1,0 @@
-{% extends 'base.html' %}
-{% block content %}
-    <ul>
-        {% for product_type in product_type_list %}
-            <li><a href="{% url 'product_type_detail' product_type.id %}"> {{ product_type.name }} </a> </li>
-        {% endfor %}
-    </ul>
-{% endblock content %}

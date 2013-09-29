@@ -23,7 +23,7 @@ class Product(models.Model):
 
     #Relations
     producer = models.ForeignKey('Producer')
-    productTypes = models.ManyToManyField('ProductType', blank=True, null=True)
+    productCategories = models.ManyToManyField('ProductCategory', blank=True, null=True)
 
     def __unicode__(self):
         return self.name + ' kr.' + str(self.price)
@@ -60,8 +60,10 @@ class Producer(models.Model):
         return self.name
 
 
-class ProductType(models.Model):
+class ProductCategory(models.Model):
     name = models.CharField(max_length=150)
+    parents = models.ManyToManyField('self', blank=True, null=True, symmetrical=False, related_name='parent+')
+    children = models.ManyToManyField('self', blank=True, null=True, symmetrical=False, related_name='child+')
 
     def __unicode__(self):
         return self.name

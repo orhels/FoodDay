@@ -1,6 +1,6 @@
 # Create your views here.
 from django.views import generic
-from Products.models import Product, ProductType, Producer
+from Products.models import Product, ProductCategory, Producer
 
 
 class ProductIndexView(generic.ListView):
@@ -29,14 +29,14 @@ class ProducerDetailView(generic.DetailView):
     template_name = 'producer_detail.html'
 
 
-class ProductTypeIndexView(generic.ListView):
-    template_name = 'product_type_index.html'
-    context_object_name = 'product_type_list'
+class ProductCategoryIndexView(generic.ListView):
+    template_name = 'product_category_index.html'
+    context_object_name = 'product_category_list'
 
     def get_queryset(self):
-        return ProductType.objects.order_by('name')
+        return ProductCategory.objects.order_by('name')
 
 
-class ProductTypeDetailView(generic.DetailView):
-    model = ProductType
-    template_name = 'product_type_detail.html'
+class ProductCategoryDetailView(generic.DetailView):
+    model = ProductCategory
+    template_name = 'product_category_detail.html'

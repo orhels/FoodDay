@@ -1,0 +1,54 @@
+[
+    {
+        "pk": 1,
+        "model": "Products.productcategory",
+        "fields": {
+            "parents": [],
+            "name": "Drikkevarer",
+            "children": []
+        }
+    },
+    {
+        "pk": 2,
+        "model": "Products.productcategory",
+        "fields": {
+            "parents": [1],
+            "name": "Brus",
+            "children": []
+        }
+    },
+    {
+        "pk": 3,
+        "model": "Products.productcategory",
+        "fields": {
+            "parents": [
+                1,
+                5
+            ],
+            "name": "Melk",
+            "children": []
+        }
+    },
+    {
+        "pk": 4,
+        "model": "Products.productcategory",
+        "fields": {
+            "parents": [
+                1
+            ],
+            "name": "Øl",
+            "children": []
+        }
+    },
+    {
+        "pk": 5,
+        "model": "Products.productcategory",
+        "fields": {
+            "parents": [],
+            "name": "Meieri",
+            "children": [
+                3
+            ]
+        }
+    }
+]

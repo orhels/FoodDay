@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 
-from Products.views import ProductDetailView, ProductIndexView, ProductTypeDetailView, ProductTypeIndexView, \
+from Products.views import ProductDetailView, ProductIndexView, ProductCategoryDetailView, ProductCategoryIndexView, \
     ProducerIndexView, ProducerDetailView
 from Misc.views import FrontPageView
 
@@ -26,8 +26,8 @@ urlpatterns = patterns('',
     url(r'^producer/(?P<pk>\d+)/$', ProducerDetailView.as_view(), name='producer_detail'),
 
     # PRODUCT_TYPE
-    url(r'^product-category/$', ProductTypeIndexView.as_view(), name='product_type_list'),
-    url(r'^product-category/(?P<pk>\d+)/$', ProductTypeDetailView.as_view(), name='product_type_detail'),
+    url(r'^product-category/$', ProductCategoryIndexView.as_view(), name='product_category_list'),
+    url(r'^product-category/(?P<pk>\d+)/$', ProductCategoryDetailView.as_view(), name='product_category_detail'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
