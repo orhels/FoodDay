@@ -7,3 +7,8 @@
 .big-top-margins{
     margin-top: 40px;
 }
+
+div#cart-widget-container{
+    min-width: 250px;
+    padding: 20px;
+}

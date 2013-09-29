@@ -17,31 +17,47 @@
 <body>
 
 <nav class="navbar navbar-default" role="navigation">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="{% url 'frontpage' %}">FoodDay</a>
-  </div>
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'frontpage' %}">FoodDay</a>
+    </div>
 
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav">
-      <li><a href="{% url 'product_list' %}">Kjøp dagligvarer</a></li>
-    </ul>
-  </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="{% url 'product_list' %}">Kjøp dagligvarer</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+
+
+            <div class="dropdown">
+                <a data-toggle="dropdown" href="#" type="button" class="btn btn-default btn-lg">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                </a>
+
+                <div id="cart-widget-container" class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <h5>Laster handlekurv...</h5>
+                </div>
+            </div>
+        </ul>
+
+    </div>
+
 </nav>
 
 
-
-
-
 {% block content %}{% endblock %}
-
-
 <script src="//code.jquery.com/jquery.js"></script>
 <script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
+<script>
+    var cartWidgetUrl = "{% url 'cart_widget' %}";
+</script>
+<script src="{% static 'custom/cart.js' %}"></script>
+
 </body>
 </html>

@@ -1,3 +1,4 @@
+from Cart.views import get_cart_widget
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 
@@ -20,6 +21,9 @@ urlpatterns = patterns('',
     # PRODUCT
     url(r'^product/$', ProductIndexView.as_view(), name='product_list'),
     url(r'^product/(?P<pk>\d+)/$', ProductDetailView.as_view(), name='product_detail'),
+
+    # CART
+    url(r'^cart/widget/$', get_cart_widget, name='cart_widget'),
 
     # PRODUCER
     url(r'^producer/$', ProducerIndexView.as_view(), name='producer_list'),
