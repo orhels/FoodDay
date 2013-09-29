@@ -53,10 +53,24 @@
 
 {% block content %}{% endblock %}
 <script src="//code.jquery.com/jquery.js"></script>
+<script src="{% static 'custom/jquery.cookie.js' %}"></script>
 <script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
 <script>
     var cartWidgetUrl = "{% url 'cart_widget' %}";
-    var cartUpdateUrl = "{% url 'cart_update' %}";
+    var cartAddUrl = "{% url 'cart_add' %}";
+    var csrftoken = $.cookie('csrftoken');
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+        crossDomain: false, // obviates need for sameOrigin test
+        beforeSend: function (xhr, settings) {
+            if (!csrfSafeMethod(settings.type)) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
 </script>
 <script src="{% static 'custom/cart.js' %}"></script>
 

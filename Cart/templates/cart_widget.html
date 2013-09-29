@@ -1,5 +1,5 @@
 <ul>
-    {% for item in cart.objects.all %}
-        <li>item.product.name</li>
+    {% for item in cart.items.all %}
+        <li>{{ item }}</li>
     {% endfor %}
 </ul>

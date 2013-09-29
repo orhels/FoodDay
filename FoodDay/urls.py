@@ -1,4 +1,4 @@
-from Cart.views import get_cart_widget, update_cart
+from Cart.views import get_cart_widget, update_cart, add_to_cart
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 
@@ -24,7 +24,8 @@ urlpatterns = patterns('',
 
     # CART
     url(r'^cart/widget/$', get_cart_widget, name='cart_widget'),
-    url(r'cart/add/(?P<product_id>/(?P<quantity>)/$)', update_cart, name='cart_update'),
+    url(r'cart/add/$', add_to_cart, name='cart_add'),
+    url(r'cart/update/$', update_cart, name='cart_update'),
 
     # PRODUCER
     url(r'^producer/$', ProducerIndexView.as_view(), name='producer_list'),
