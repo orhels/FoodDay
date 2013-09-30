@@ -44,5 +44,5 @@ class ProductCategoryDetailView(generic.DetailView):
 
 
 def get_sidebar_widget(request):
-    product_category_list = ProductCategory.objects.all()
+    product_category_list = ProductCategory.objects.filter(parents=None).all()
     return render_to_response('product_category_sidebar.html', {'product_category_list': product_category_list})

@@ -4,7 +4,7 @@
         "model": "Products.product",
         "fields": {
             "productCategories": [
-                5
+                6
             ],
             "massUnit": "kg",
             "name": "Norvegia",
@@ -29,12 +29,7 @@
         "model": "Products.productcategory",
         "fields": {
             "parents": [],
-            "name": "Drikkevarer",
-            "children": [
-                2,
-                3,
-                4
-            ]
+            "name": "Drikkevarer"
         }
     },
     {
@@ -44,8 +39,7 @@
             "parents": [
                 1
             ],
-            "name": "Brus",
-            "children": []
+            "name": "Brus"
         }
     },
     {
@@ -56,8 +50,7 @@
                 1,
                 5
             ],
-            "name": "Melk",
-            "children": []
+            "name": "Melk"
         }
     },
     {
@@ -67,8 +60,7 @@
             "parents": [
                 1
             ],
-            "name": "Øl",
-            "children": []
+            "name": "Øl"
         }
     },
     {
@@ -76,10 +68,17 @@
         "model": "Products.productcategory",
         "fields": {
             "parents": [],
-            "name": "Meieri",
-            "children": [
-                3
-            ]
+            "name": "Meieriprodukter"
+        }
+    },
+        {
+        "pk": 6,
+        "model": "Products.productcategory",
+        "fields": {
+            "parents": [
+                5
+            ],
+            "name": "Ost"
         }
     }
 ]

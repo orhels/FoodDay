@@ -9,14 +9,7 @@
             {% if not forloop.last %},{% endif %}
         {% endfor %}
         </li>
-        <li>
-        Children:
-        {% for child in productcategory.children.all %}
-            {{ child }}
-            {% if not forloop.last %},{% endif %}
-        {% endfor %}
-        </li>
-        {% for product in productcategory.product_set.all %}
+        {% for product in productcategory.products.all %}
             <li><a href="{% url 'product_detail' product.id %}"> {{ product.name }} </a></li>
         {% endfor %}
     </ul>

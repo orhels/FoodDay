@@ -1,7 +1,6 @@
 
 <ul class="nav nav-pills nav-stacked">
     {% for product_category in product_category_list %}
-        {% if product_category.parents.count == 0 %}
             <li><a href="#">{{ product_category.name }}</a>
                 <ul>
                     {% for product_subcategory in product_category.children.all %}
@@ -9,6 +8,5 @@
                     {% endfor %}
                 </ul>
             </li>
-        {% endif %}
     {% endfor %}
 </ul>
