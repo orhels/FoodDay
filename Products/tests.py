@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase, Client
 
 
-class SimpleTest(TestCase):
+class ProductTest(TestCase):
 
     def setUp(self):
         self.producer = Producer(name='Tine meierier')

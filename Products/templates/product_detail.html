@@ -28,7 +28,7 @@
                         <h6>{{ product.pretty_price_per_mass }}</h6>
                 </div>
                 <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-                        <button type="button" class="btn btn-success btn-lg custom-btn-big">Kjøp</button>
+                        <button id="buy-product-btn" type="button" class="btn btn-success btn-lg custom-btn-big">Kjøp</button>
                 </div>
             </div>
 
@@ -42,6 +42,7 @@
                 </div>
             </div>
 
+            <input type="hidden" name="id" value="{{ product.id }}" />
 
         </div>
     </div>
