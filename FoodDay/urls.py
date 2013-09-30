@@ -3,7 +3,7 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 
 from Products.views import ProductDetailView, ProductIndexView, ProductCategoryDetailView, ProductCategoryIndexView, \
-    ProducerIndexView, ProducerDetailView
+    ProducerIndexView, ProducerDetailView, get_sidebar_widget
 from Misc.views import FrontPageView
 
 # Uncomment the next two lines to enable the admin:
@@ -31,9 +31,10 @@ urlpatterns = patterns('',
     url(r'^producer/$', ProducerIndexView.as_view(), name='producer_list'),
     url(r'^producer/(?P<pk>\d+)/$', ProducerDetailView.as_view(), name='producer_detail'),
 
-    # PRODUCT_TYPE
+    # PRODUCT_CATEGORY
     url(r'^product-category/$', ProductCategoryIndexView.as_view(), name='product_category_list'),
     url(r'^product-category/(?P<pk>\d+)/$', ProductCategoryDetailView.as_view(), name='product_category_detail'),
+    url(r'^product-category-sidebar/$', get_sidebar_widget, name='sidebar_widget'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

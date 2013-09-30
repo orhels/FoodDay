@@ -51,7 +51,12 @@
 </nav>
 
 
+<div id="sidebar" class="col-lg-2">
+
+</div>
 {% block content %}{% endblock %}
+
+
 <script src="//code.jquery.com/jquery.js"></script>
 <script src="{% static 'custom/jquery.cookie.js' %}"></script>
 <script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
@@ -73,6 +78,15 @@
     });
 </script>
 <script src="{% static 'custom/cart.js' %}"></script>
+<script>
+    var sidebarURL = "{% url 'sidebar_widget' %}"
+    $.get(sidebarURL , function(data)
+    {
+        $('#sidebar').html(data)
+    })
+</script>
+
+
 
 </body>
 </html>

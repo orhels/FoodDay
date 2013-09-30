@@ -1,18 +1,49 @@
 [
     {
         "pk": 1,
+        "model": "Products.product",
+        "fields": {
+            "productCategories": [
+                5
+            ],
+            "massUnit": "kg",
+            "name": "Norvegia",
+            "producer": 1,
+            "vegetarian": false,
+            "vegan": false,
+            "mass": "1",
+            "image": "product_images/product_images_placeholder.png",
+            "price": "100",
+            "description": "Ost"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "Products.producer",
+        "fields": {
+            "name": "Tine"
+        }
+    },
+    {
+        "pk": 1,
         "model": "Products.productcategory",
         "fields": {
             "parents": [],
             "name": "Drikkevarer",
-            "children": []
+            "children": [
+                2,
+                3,
+                4
+            ]
         }
     },
     {
         "pk": 2,
         "model": "Products.productcategory",
         "fields": {
-            "parents": [1],
+            "parents": [
+                1
+            ],
             "name": "Brus",
             "children": []
         }

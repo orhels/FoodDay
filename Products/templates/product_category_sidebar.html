@@ -1,0 +1,14 @@
+
+<ul class="nav nav-pills nav-stacked">
+    {% for product_category in product_category_list %}
+        {% if product_category.parents.count == 0 %}
+            <li><a href="#">{{ product_category.name }}</a>
+                <ul>
+                    {% for product_subcategory in product_category.children.all %}
+                        <li><a href="{% url 'product_category_detail' product_subcategory.id %}">{{ product_subcategory.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
