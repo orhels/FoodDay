@@ -52,7 +52,8 @@
 
 <div class="row">
 <div id="sidebar" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-
+    {% load sidebar %}
+    {% sidebar %}
 </div>
 <div class="col-xs-10 col-sm-8 col-md-8 col-lg-8">
     {% block content %}{% endblock %}
@@ -83,13 +84,6 @@
     });
 </script>
 <script src="{% static 'custom/cart.js' %}"></script>
-<script>
-    var sidebarURL = "{% url 'sidebar_widget' %}"
-    $.get(sidebarURL , function(data)
-    {
-        $('#sidebar').html(data)
-    })
-</script>
 
 
 
