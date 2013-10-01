@@ -26,37 +26,28 @@
         </button>
         <a class="navbar-brand" href="{% url 'frontpage' %}">FoodDay</a>
     </div>
-
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav">
-            <li><a href="{% url 'product_list' %}">Kjøp dagligvarer</a></li>
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-
-        </ul>
-
-    </div>
-
 </nav>
 
 <div class="row">
-<div id="sidebar" class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-    {% load sidebar %}
-    {% sidebar %}
-</div>
-<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    {% block content %}{% endblock %}
-</div>
-<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-    <h3 class="text-center">Handlekurv</h3>
-<div id="cart-widget-container" >
-        Laster handlekurv...
-</div>
-</div>
-</div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <h3 class="text-center">Dagligvarer</h3>
 
+        <div id="sidebar">
+            {% load sidebar %}
+            {% sidebar %}
+        </div>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <h3 class="text-center">Handlekurv</h3>
 
+        <div id="cart-widget-container">
+            Laster handlekurv...
+        </div>
+    </div>
+</div>
 
 
 <script src="//code.jquery.com/jquery.js"></script>
@@ -80,7 +71,6 @@
     });
 </script>
 <script src="{% static 'custom/cart.js' %}"></script>
-
 
 
 </body>

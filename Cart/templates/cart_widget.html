@@ -1,3 +1,5 @@
-{% for item in cart.items.all %}
-    <p>{{ item }}</p>
-{% endfor %}
+<ul class="list-group">
+    {% for item in cart.items.all %}
+        <li class="list-group-item">{{ item }}</li>
+    {% endfor %}
+</ul>
