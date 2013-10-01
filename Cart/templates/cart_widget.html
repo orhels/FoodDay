@@ -1,5 +1,3 @@
-<ul>
-    {% for item in cart.items.all %}
-        <li>{{ item }}</li>
-    {% endfor %}
-</ul>
+{% for item in cart.items.all %}
+    <p>{{ item }}</p>
+{% endfor %}
