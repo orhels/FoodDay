@@ -1,9 +1,3 @@
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
-"""
 from Products.models import Producer, Product
 from django.core.urlresolvers import reverse
 
@@ -11,9 +5,6 @@ from django.test import TestCase, Client
 
 
 class CartViewTest(TestCase):
-    def test_cart_widget(self):
-        self.assertEqual(1 + 1, 2)
-
     def setUp(self):
         self.producer = Producer(name='Tine meierier')
         self.producer.save()
