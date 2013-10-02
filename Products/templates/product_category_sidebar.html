@@ -1,12 +1,23 @@
 
-<ul class="nav nav-pills nav-stacked">
+<div class="panel-group" id="sidebar">
     {% for product_category in product_category_list %}
-            <li><a href="#">{{ product_category.name }}</a>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="sidebar-toggle" data-toggle="collapse" data-parent="#sidebar" href="#collapse{{ product_category.id }}">
+                    {{ product_category.name }}
+                </a>
+            </h4>
+        </div>
+        <div id="collapse{{ product_category.id }}" class="panel-collapse collapse">
+            <div class="panel-body">
                 <ul>
                     {% for product_subcategory in product_category.children.all %}
                         <li><a href="{% url 'product_category_detail' product_subcategory.id %}">{{ product_subcategory.name }}</a></li>
                     {% endfor %}
                 </ul>
-            </li>
+            </div>
+        </div>
+    </div>
     {% endfor %}
-</ul>
+</div>
