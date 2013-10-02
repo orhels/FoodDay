@@ -1,16 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2> {{ productcategory.name }}</h2>
-    <ul>
-        <li>
-        Parents:
-        {% for parent in productcategory.parents.all %}
-            {{ parent }}
-            {% if not forloop.last %},{% endif %}
-        {% endfor %}
-        </li>
-        {% for product in productcategory.products.all %}
-            <li><a href="{% url 'product_detail' product.id %}"> {{ product.name }} </a></li>
-        {% endfor %}
-    </ul>
+        <div class="row">
+            {% for product in productcategory.products.all %}
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-6 col-md-6 col-lg-6">
+                                    <img height="50" width="50" src="{{ product.image.url }}" class="img-responsive center-block"/>
+                                </div>
+                                <div class="col-xs-1 col-md-6 col-lg-6">
+                                    <h7>{{ product.producer.name }}</h7>
+                                    <h6>{{ product.pretty_price }}</h6>
+                                    <h6>{{ product.pretty_price_per_mass }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
 {% endblock content %}
