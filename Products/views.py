@@ -1,5 +1,6 @@
 # Create your views here.
-from django.shortcuts import render_to_response
+from django.template import Context
+from django.template.loader import get_template
 from django.views import generic
 from Products.models import Product, ProductCategory, Producer
 
@@ -43,6 +44,8 @@ class ProductCategoryDetailView(generic.DetailView):
     template_name = 'product_category_detail.html'
 
 
-def get_sidebar_widget(request):
+def get_sidebar_widget_rendered():
     product_category_list = ProductCategory.objects.filter(parents=None).all()
-    return render_to_response('product_category_sidebar.html', {'product_category_list': product_category_list})
+    template = get_template('product_category_sidebar.html')
+    context = Context({'product_category_list': product_category_list})
+    return template.render(context)

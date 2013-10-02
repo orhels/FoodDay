@@ -18,6 +18,24 @@
         }
     },
     {
+        "pk": 2,
+        "model": "Products.product",
+        "fields": {
+            "productCategories": [
+                3
+            ],
+            "massUnit": "l",
+            "name": "Melk",
+            "producer": 1,
+            "vegetarian": false,
+            "vegan": false,
+            "mass": "1",
+            "image": "product_images/product_images_placeholder.png",
+            "price": "21",
+            "description": "En helt vanlig melk. Men god er den!"
+        }
+    },
+    {
         "pk": 1,
         "model": "Products.producer",
         "fields": {
