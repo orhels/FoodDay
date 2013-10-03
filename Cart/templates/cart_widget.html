@@ -1,5 +1,18 @@
 <ul class="list-group">
     {% for item in cart.items.all %}
-        <li class="list-group-item">{{ item }}</li>
+        <li class="list-group-item">
+            <div class="row">
+                 <div class="col-xs-4 col-md-4 col-lg-4">
+                    <img height="150" width="40" src="{{ item.product.image.url }}" class="img-responsive center-block"/>
+                </div>
+                <div class="col-xs-4 col-md-4 col-lg-4">
+                    {{ item }}
+                </div>
+
+                <div class="col-xs-1 col-md-1 col-lg-1">
+                    {{ item.product.pretty_price }}
+                </div>
+            </div>
+        </li>
     {% endfor %}
 </ul>
