@@ -14,7 +14,6 @@ class ProductAdmin(admin.ModelAdmin):
             kwargs['queryset'] = ProductCategory.objects.filter(children=None)
         return super(ProductAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
 
-
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Producer)
 admin.site.register(ProductCategory)
