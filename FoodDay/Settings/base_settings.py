@@ -149,3 +149,5 @@ LOGGING = {
         },
     }
 }
+
+I_AM_ONLY_DOING_THIS_TO_TRICK_PYCHARMS = True
