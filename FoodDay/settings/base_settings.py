@@ -2,7 +2,7 @@
 SECRET_KEY = 'sa8cda6f++pm++m$ilg=v1a#-os0fbg)dyl=qwv==-jqh^w9vw'
 
 from unipath import Path
-BASE_DIR = Path(__file__).parent.parent
+BASE_DIR = Path(__file__).parent.parent.parent
 
 ADMINS = (
     ('Tobias G. Waaler', 'tobiasgwaaler@gmail.com'),
