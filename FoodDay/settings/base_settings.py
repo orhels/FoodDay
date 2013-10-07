@@ -149,8 +149,3 @@ LOGGING = {
         },
     }
 }
-
-# Defines the fixtures dir
-FIXTURE_DIRS = (
-    'Products/fixtures',
-)
