@@ -1,12 +1,8 @@
-# Django settings for FoodDay project.
+# Make this unique, and don't share it with anybody.
+SECRET_KEY = 'sa8cda6f++pm++m$ilg=v1a#-os0fbg)dyl=qwv==-jqh^w9vw'
 
-# Setting paths for future reference
 from unipath import Path
-PROJECT_ROOT_PATH = Path(__file__).parent.parent
-
-
-DEBUG = False
-TEMPLATE_DEBUG = DEBUG
+BASE_DIR = Path(__file__).parent.parent
 
 ADMINS = (
     ('Tobias G. Waaler', 'tobiasgwaaler@gmail.com'),
@@ -14,24 +10,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {}
-
-#### HEROKU #####
-
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] = dj_database_url.config()
-
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
-
-BASE_DIR = PROJECT_ROOT_PATH
-
-### HEROKU END ####
-
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -58,7 +38,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = PROJECT_ROOT_PATH.child('uploaded_media')
+MEDIA_ROOT = BASE_DIR.child('uploaded_media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -80,8 +60,8 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    PROJECT_ROOT_PATH.child('static').child('bootstrap'),
-    PROJECT_ROOT_PATH.child('static').child('custom'),
+    BASE_DIR.child('static').child('bootstrap'),
+    BASE_DIR.child('static').child('custom'),
 )
 
 
@@ -93,8 +73,6 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'sa8cda6f++pm++m$ilg=v1a#-os0fbg)dyl=qwv==-jqh^w9vw'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -118,10 +96,10 @@ ROOT_URLCONF = 'FoodDay.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'FoodDay.wsgi.application'
 
-TEMPLATE_DIRS = (PROJECT_ROOT_PATH.child('templates'),
-                 PROJECT_ROOT_PATH.child('Misc').child('templates'),
-                 PROJECT_ROOT_PATH.child('Products').child('templates'),
-                 PROJECT_ROOT_PATH.child('Recipies').child('templates'),)
+TEMPLATE_DIRS = (BASE_DIR.child('templates'),
+                 BASE_DIR.child('Misc').child('templates'),
+                 BASE_DIR.child('Products').child('templates'),
+                 BASE_DIR.child('Recipies').child('templates'),)
 
 
 INSTALLED_APPS = (
