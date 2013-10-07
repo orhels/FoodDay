@@ -62,6 +62,7 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     BASE_DIR.child('static').child('bootstrap'),
     BASE_DIR.child('static').child('custom'),
+    BASE_DIR.child('static').child('fonts'),
 )
 
 
