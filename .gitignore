@@ -4,3 +4,4 @@
 .DS_Store
 .idea/*
 foodday_database_file
+static/compiled/
