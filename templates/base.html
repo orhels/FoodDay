@@ -6,13 +6,13 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="{% static 'dist/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
-    <link href="{% static 'custom/custom.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'custom/css/custom.css' %}" rel="stylesheet" media="screen">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="{% static 'docs-assets/js/html5shiv.js' %}"></script>
-      <script src="{% static 'docs-assets/js/respond.min.js' %}"></script>
+      <script src="{% static 'bootstrap/js/html5shiv.js' %}"></script>
+      <script src="{% static 'bootstrap/js/respond.min.js' %}"></script>
     <![endif]-->
 </head>
 <body>
@@ -51,15 +51,15 @@
 </div>
 
 
-<script src="{% static 'custom/jquery.1.10.2.js' %}"></script>
-<script src="{% static 'custom/jquery.cookie.js' %}"></script>
-<script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'custom/js/jquery.1.10.2.js' %}"></script>
+<script src="{% static 'custom/js/jquery.cookie.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 <script>
     var cartWidgetUrl = "{% url 'cart_widget' %}";
     var cartAddUrl = "{% url 'cart_add' %}";
 </script>
-<script src="{% static 'custom/common.js' %}"></script>
-<script src="{% static 'custom/cart.js' %}"></script>
+<script src="{% static 'custom/js/common.js' %}"></script>
+<script src="{% static 'custom/js/cart.js' %}"></script>
 {% block scripts %}{% endblock scripts %}
 
 </body>
