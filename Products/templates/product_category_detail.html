@@ -1,5 +1,4 @@
-{% extends 'base.html' %}
-{% block content %}
+
     <h3> {{ productcategory.name }}</h3>
         <div class="row">
             {% for product in productcategory.products.all %}
@@ -28,4 +27,3 @@
             {% endfor %}
 
         </div>
-{% endblock content %}

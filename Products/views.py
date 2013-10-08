@@ -1,4 +1,5 @@
 # Create your views here.
+from django.shortcuts import render_to_response
 from django.template import Context
 from django.template.loader import get_template
 from django.views import generic
@@ -49,3 +50,10 @@ def get_sidebar_widget_rendered():
     template = get_template('product_category_sidebar.html')
     context = Context({'product_category_list': product_category_list})
     return template.render(context)
+
+
+def product_category(request, **kwargs):
+    print request
+    prodId= int(kwargs['pk'])
+    productcategory = ProductCategory.objects.get(pk=kwargs['pk'])
+    return render_to_response('product_category_detail.html', {'productcategory' : productcategory})
