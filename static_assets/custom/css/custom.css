@@ -28,3 +28,7 @@ div#cart-widget-container{
     font-family: 'entypo';
     font-size: 12pt;
 }
+
+.total-line{
+    border-top: 2px solid;
+}

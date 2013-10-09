@@ -12,9 +12,7 @@ var Sidebar = {
     },
 
     addMenuHeaderListener: function(index, element){
-        //console.log(element);
         $(element).on('click', function(){
-            //console.log($(element).find('a.sidebar-toggle')[0])
             $(element).find('a.sidebar-toggle')[0].click();
         });
     },
