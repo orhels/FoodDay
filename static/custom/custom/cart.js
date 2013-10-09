@@ -10,7 +10,6 @@ var cartApp = function () {
     var addToCart = function (event) {
         data = {'product_id': $('input[name=id]').val(),
             'quantity': 1 };
-        $.post(cartAddUrl, data);
         event.preventDefault();
         var carttext = $('#carttext');
         var productImg = $('.productimg').eq(0);
@@ -33,9 +32,11 @@ var cartApp = function () {
                 'height': 1
             }, 1000, 'easeOutCubic');
 
-            setTimeout(function(){
-                updateCartWidget();
-            }, 500);
+            $.post(cartAddUrl, data, function(){
+                setTimeout(function(){
+                    updateCartWidget();
+                }, 500); // this number should be tweaked when in prod.
+            });
 
             imgClone.animate({
                 'width': 0,
