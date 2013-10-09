@@ -35,7 +35,7 @@ var cartApp = function () {
 
             setTimeout(function(){
                 updateCartWidget();
-            }, 1100);
+            }, 500);
 
             imgClone.animate({
                 'width': 0,

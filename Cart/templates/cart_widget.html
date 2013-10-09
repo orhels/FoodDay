@@ -15,4 +15,14 @@
             </div>
         </li>
     {% endfor %}
+    <li class="list-group-item total-line">
+        <div class="row">
+            <div class="col-xs-9 col-md-9 col-lg-9">
+                <b>Total</b>
+            </div>
+            <div class="col-xs-2 col-md-2 col-lg-2">
+                <b>{{ cart.get_total_price }}</b>
+            </div>
+        </div>
+    </li>
 </ul>

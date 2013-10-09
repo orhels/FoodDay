@@ -25,6 +25,12 @@ class Cart(models.Model):
         else:
             self._add_product_to_cart(product_id, quantity)
 
+    def get_total_price(self):
+        pr = 0.0
+        for item in self.items.all():
+            pr = pr + (float(item.product.price) * item.quantity)
+        return pr
+
     def _product_is_already_in_cart(self, product_id):
         return self.items.filter(product_id=product_id).exists()
 
