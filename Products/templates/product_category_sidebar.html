@@ -13,7 +13,7 @@
             <div class="panel-body">
                 <ul>
                     {% for product_subcategory in product_category.children.all %}
-                        <li><div class="sidebar-subcat" data-product_cat_id="{{ product_subcategory.id }}" href="/product-category/{{ product_subcategory.id }}"><a>{{ product_subcategory.name }}</a></div></li>
+                        <li><div class="sidebar-subcat" data-product_cat_id="{{ product_subcategory.id }}" href="/product-category/{{ product_subcategory.id }}"><a href="#/product-category/{{ product_subcategory.id }}">{{ product_subcategory.name }}</a></div></li>
                     {% endfor %}
                 </ul>
             </div>
