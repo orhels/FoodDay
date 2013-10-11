@@ -49,7 +49,8 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = 'static'
+STATIC_ROOT = BASE_DIR.child('static')
+# STATIC_ROOT = '/static/compiled/'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -60,9 +61,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    BASE_DIR.child('static').child('bootstrap'),
-    BASE_DIR.child('static').child('custom'),
-    BASE_DIR.child('static').child('fonts'),
+    BASE_DIR.child('static_assets'),
 )
 
 
