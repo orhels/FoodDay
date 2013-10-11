@@ -3,6 +3,9 @@ from base_settings import *
 
 I_AM_ONLY_DOING_THIS_TO_TRICK_PYCHARMS
 
+DEBUG = True
+TEMPLATE_DEBUG = True
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
