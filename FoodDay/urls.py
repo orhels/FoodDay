@@ -2,7 +2,7 @@ from Cart.views import get_cart_widget, update_cart, add_to_cart
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 
-from Products.views import ProductDetailView, ProductIndexView, ProductCategoryDetailView, ProductCategoryIndexView, \
+from Products.views import ProductDetailView, ProductIndexView, ProductCategoryIndexView, \
     ProducerIndexView, ProducerDetailView, product_category
 from Misc.views import FrontPageView
 
