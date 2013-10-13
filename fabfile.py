@@ -1,16 +1,17 @@
 # coding=UTF-8
 import sys
 
-from fabric.context_managers import cd, shell_env, settings
+from fabric.context_managers import cd, shell_env, settings, prefix
 from fabric.operations import local, run
 
+TEST_SETTINGS = "FoodDay.Settings.test_settings"
 LOCAL_SETTINGS = "FoodDay.Settings.local_settings"
 
 
 def deploy_to_test(run_tests="yes", debug="no"):
     print "Deploying to test"
     print ""
-    with shell_env(DJANGO_SETTINGS_MODULE=LOCAL_SETTINGS):
+    with shell_env(DJANGO_SETTINGS_MODULE=TEST_SETTINGS):
         if debug != "no":
             _print_debug_info()
         if run_tests == "yes":
@@ -33,13 +34,15 @@ def _add_test_as_remote():
 def _restart_server():
     print ""
     print "Restarting server"
-    code_dir = '/home/foodaytest/app/FoodDay'
+    code_dir = '/home/foodaytest/app/FooDay'
     with settings(host_string='foodaytest@fooday.no'), cd(code_dir):
-        if not "test	foodaytest@fooday.no:repo/foodaytest.git" in run('git remote -v'):
-            run('git remote add test foodaytest@fooday.no:repo/foodaytest.git')
-        run('git clean -f -d')
-        run('git pull --strategy=recursive --strategy-option=theirs test master')
-        print "TODO: syncdb"
+        run('git reset --hard')
+        run('git pull origin master')
+        with prefix('source env/bin/activate'):
+            run('which python')
+            run('pip install -r requirements.txt')
+            run('python manage.py syncdb')
+            run('python manage.py collectstatic')
     print "TODO: emit restart signal"
 
 
