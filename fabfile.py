@@ -26,7 +26,8 @@ def deploy_to_test():
 def _commit_to_test_branch():
     confirm("Your local changes will be commited to the test branch. Ok?")
     local('git checkout test')
-    local('git commit -a')
+    with(settings(warn_only=True)):
+        local('git commit -a')
 
 
 def _restart_server():
