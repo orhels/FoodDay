@@ -23,7 +23,8 @@ def deploy_to_test(run_tests="yes", debug="no"):
 def _push_to_test():
     _add_test_as_remote()
     print "Pushing HEAD to test servers master branch"
-    local('git push test master')
+    local('git config --local push.default current')
+    local('git push test +HEAD:master ')
 
 
 def _add_test_as_remote():
@@ -36,8 +37,9 @@ def _restart_server():
     print "Restarting server"
     code_dir = '/home/foodaytest/app/FooDay'
     with settings(host_string='foodaytest@fooday.no'), cd(code_dir), shell_env(DJANGO_SETTINGS_MODULE=TEST_SETTINGS):
-        run('git reset --hard')
-        run('git pull origin master')
+        # run('git reset --hard')
+        run('git fetch')
+        run('git checkout origin/master')
         with prefix('source env/bin/activate'):
             run('which python')
             run('pip install -r requirements.txt')
