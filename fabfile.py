@@ -7,12 +7,14 @@ from fabric.operations import local, run
 LOCAL_SETTINGS = "FoodDay.Settings.local_settings"
 
 
-def deploy_to_test():
+def deploy_to_test(run_tests="yes", debug="no"):
     print "Deploying to test"
     print ""
     with shell_env(DJANGO_SETTINGS_MODULE=LOCAL_SETTINGS):
-        _print_debug_info()
-        _run_tests()
+        if debug != "no":
+            _print_debug_info()
+        if run_tests == "yes":
+            _run_tests()
         _push_to_test()
         _restart_server()
 
@@ -24,13 +26,19 @@ def _push_to_test():
 
 
 def _add_test_as_remote():
-    local('git remote add test git://foodaytest@fooday.no:repo/foodaytest.git')
+    if not "test	foodaytest@fooday.no:repo/foodaytest.git" in local('git remote -v', capture=True):
+        local('git remote add test foodaytest@fooday.no:repo/foodaytest.git')
 
 
 def _restart_server():
+    print ""
+    print "Restarting server"
     code_dir = '/home/foodaytest/app/FoodDay'
     with settings(host_string='foodaytest@fooday.no'), cd(code_dir):
-        run('git pull test master')
+        if not "test	foodaytest@fooday.no:repo/foodaytest.git" in run('git remote -v'):
+            run('git remote add test foodaytest@fooday.no:repo/foodaytest.git')
+        run('git clean -f -d')
+        run('git pull --strategy=recursive --strategy-option=theirs test master')
         print "TODO: syncdb"
     print "TODO: emit restart signal"
 
