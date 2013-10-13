@@ -23,7 +23,8 @@ def deploy_to_test(run_tests="yes", debug="no"):
 def _push_to_test():
     _add_test_as_remote()
     print "Pushing HEAD to test servers master branch"
-    local('git push test master')
+    local('git config --local push.default current')
+    local('git push test/master ')
 
 
 def _add_test_as_remote():
