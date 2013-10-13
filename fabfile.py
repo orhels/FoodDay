@@ -11,7 +11,7 @@ LOCAL_SETTINGS = "FoodDay.Settings.local_settings"
 def deploy_to_test(run_tests="yes", debug="no"):
     print "Deploying to test"
     print ""
-    with shell_env(DJANGO_SETTINGS_MODULE=TEST_SETTINGS):
+    with shell_env(DJANGO_SETTINGS_MODULE=LOCAL_SETTINGS):
         if debug != "no":
             _print_debug_info()
         if run_tests == "yes":
@@ -35,7 +35,7 @@ def _restart_server():
     print ""
     print "Restarting server"
     code_dir = '/home/foodaytest/app/FooDay'
-    with settings(host_string='foodaytest@fooday.no'), cd(code_dir):
+    with settings(host_string='foodaytest@fooday.no'), cd(code_dir), shell_env(DJANGO_SETTINGS_MODULE=TEST_SETTINGS):
         run('git reset --hard')
         run('git pull origin master')
         with prefix('source env/bin/activate'):
