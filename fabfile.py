@@ -1,7 +1,7 @@
 # coding=UTF-8
 import sys
 
-from fabric.context_managers import cd, shell_env
+from fabric.context_managers import cd, shell_env, settings
 from fabric.contrib.console import confirm
 from fabric.decorators import hosts
 from fabric.operations import local, run
@@ -37,10 +37,9 @@ def _push_to_remote():
     local('git push origin test')
 
 
-@hosts('foodaytest@fooday.no')
 def _update_on_server():
     code_dir = '/home/foodaytest/app/FoodDay'
-    with cd(code_dir):
+    with settings(host_string='foodaytest@fooday.no'), cd(code_dir):
         run('git pull origin test')
 
 
