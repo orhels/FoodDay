@@ -2,12 +2,9 @@
 import sys
 
 from fabric.context_managers import cd, shell_env, settings
-from fabric.contrib.console import confirm
 from fabric.operations import local, run
 
 LOCAL_SETTINGS = "FoodDay.Settings.local_settings"
-
-_old_environment_value = ""
 
 
 def deploy_to_test():
@@ -16,32 +13,26 @@ def deploy_to_test():
     with shell_env(DJANGO_SETTINGS_MODULE=LOCAL_SETTINGS):
         _print_debug_info()
         _run_tests()
-        _commit_to_test_branch()
-        _push_to_remote()
-        _update_on_server()
+        _push_to_test()
         _restart_server()
 
 
-def _commit_to_test_branch():
-    confirm("Your local changes will be commited to the test branch. Ok?")
-    local('git checkout test')
-    with(settings(warn_only=True)):
-        local('git commit -a')
+def _push_to_test():
+    _add_test_as_remote()
+    print "Pushing HEAD to test servers master branch"
+    local('git push test master')
+
+
+def _add_test_as_remote():
+    local('git remote add test git://foodaytest@fooday.no:repo/foodaytest.git')
 
 
 def _restart_server():
-    print "TODO: emit restart signal"
-
-
-def _push_to_remote():
-    local('git push origin test')
-
-
-def _update_on_server():
     code_dir = '/home/foodaytest/app/FoodDay'
     with settings(host_string='foodaytest@fooday.no'), cd(code_dir):
-        run('git pull origin test')
+        run('git pull test master')
         print "TODO: syncdb"
+    print "TODO: emit restart signal"
 
 
 def _virtualenv_has_been_activated():
