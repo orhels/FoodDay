@@ -3,9 +3,9 @@
         <div class="row">
             {% for product in productcategory.products.all %}
 
-                <a href="{% url 'product_detail' product.id %}">
+                <a href="#{% url 'product_detail' product.id %}">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default productpanel" data-product_id="{{ product.id }}">
                         <div class="panel-heading">
                             {{ product.name }}
                         </div>
@@ -27,3 +27,28 @@
             {% endfor %}
 
         </div>
+        <script>
+            var category_detail = {
+                init:   function(){
+                    this.makeProductClickable();
+                },
+
+                makeProductClickable: function(){
+                    var productpanel = $("body").find('div.productpanel');
+                    $.each(productpanel, this.addProductListener);
+
+                },
+
+                addProductListener: function(index, element){
+                    $(element).on("click", function() {
+                        $.get("/product/"+ $(element).data('product_id'), function(data){
+                            $('#main-content').html(data);
+                        });
+                    });
+                }
+            };
+
+            if (category_detail !== undefined){
+                category_detail.init();
+            }
+        </script>

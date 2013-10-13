@@ -1,5 +1,4 @@
-{% extends 'base.html' %}
-{% block content %}
+
 
 
             <h3 class="text-center">{{ product.name }} {{ product.mass }}{{ product.massUnit }}</h3>
@@ -39,7 +38,6 @@
 
             <input type="hidden" name="id" value="{{ product.id }}" />
             <input type="hidden" name="csrftoken" value="{% csrf_token %}" />
-
-
-
-{% endblock content %}
+            <script>
+                cartApp();
+            </script>
