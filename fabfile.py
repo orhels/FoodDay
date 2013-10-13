@@ -3,7 +3,6 @@ import sys
 
 from fabric.context_managers import cd, shell_env, settings
 from fabric.contrib.console import confirm
-from fabric.decorators import hosts
 from fabric.operations import local, run
 
 LOCAL_SETTINGS = "FoodDay.Settings.local_settings"
@@ -42,6 +41,7 @@ def _update_on_server():
     code_dir = '/home/foodaytest/app/FoodDay'
     with settings(host_string='foodaytest@fooday.no'), cd(code_dir):
         run('git pull origin test')
+        print "TODO: syncdb"
 
 
 def _virtualenv_has_been_activated():
