@@ -1,7 +1,17 @@
-var Sidebar = {
+app.SidebarView = Backbone.View.extend({
 
-    init:   function(){
-        this.makeSidebarClickable();
+    initialize: function(options){
+
+    },
+
+
+    render: function(){
+        var that = this;
+        $.get("/product-category-sidebar/", function(data){
+            that.$el.html(data);
+            that.makeSidebarClickable();
+        });
+        return this;
     },
 
     makeSidebarClickable: function(){
@@ -17,7 +27,6 @@ var Sidebar = {
         });
     },
 
-
     addMenuSubcatListener: function(index, element){
         $(element).on("click", function() {
             $.get("/product-category/"+ $(element).data('product_cat_id'), function(data){
@@ -25,5 +34,4 @@ var Sidebar = {
             });
         });
     }
-
-};
+});
