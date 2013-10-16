@@ -1,15 +1,3 @@
-@font-face {
-    font-family: 'entypo';
-    src: url("../../fonts/entypo/entypo.eot");
-    src: url("../../fonts/entypo/entypo.eot?#iefix") format('embedded-opentype'),
-         url("../../fonts/entypo/entypo.woff") format('woff'),
-         url("../../fonts/entypo/entypo.ttf") format('truetype'),
-         url("../../fonts/entypo/entypo.svg#entypo") format('svg');
-
-    font-style: normal;
-    font-weight: normal;
-}
-
 .custom-btn-big {
     width: 100px;
     height: 58px;
@@ -24,11 +12,10 @@ div#cart-widget-container{
     padding-right: 10px;
 }
 
-.entypo{
-    font-family: 'entypo';
-    font-size: 12pt;
-}
-
 .total-line{
     border-top: 2px solid;
+}
+
+body, html, h2, h3 {
+    font-family: 'Open Sans', sans-serif;
 }

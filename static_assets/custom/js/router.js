@@ -23,7 +23,6 @@ app.Router = Backbone.Router.extend({
    },
 
    product_category: function(pcid){
-       console.log("route -> product_category");
        if (this.activeView){
            this.activeView.remove();
        }
@@ -37,7 +36,6 @@ app.Router = Backbone.Router.extend({
    },
 
    product_detail: function(pid){
-       console.log("route -> product");
        if (this.activeView){
            this.activeView.remove();
        }
