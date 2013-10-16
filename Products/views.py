@@ -45,15 +45,11 @@ class ProductCategoryDetailView(generic.DetailView):
     template_name = 'product_category_detail.html'
 
 
-def get_sidebar_widget_rendered():
+def get_sidebar_widget_rendered(request):
     product_category_list = ProductCategory.objects.filter(parents=None).all()
-    template = get_template('product_category_sidebar.html')
-    context = Context({'product_category_list': product_category_list})
-    return template.render(context)
+    return render_to_response('product_category_sidebar.html', {'product_category_list': product_category_list})
 
 
 def product_category(request, **kwargs):
-    print request
-    prodId= int(kwargs['pk'])
     productcategory = ProductCategory.objects.get(pk=kwargs['pk'])
     return render_to_response('product_category_detail.html', {'productcategory' : productcategory})

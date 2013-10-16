@@ -3,9 +3,9 @@
         <div class="row">
             {% for product in productcategory.products.all %}
 
-                <a href="{% url 'product_detail' product.id %}">
+                <a class="product-link" data-product_id="{{ product.id }}" href="#{% url 'product_detail' product.id %}" onclick="return false;">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default productpanel" data-product_id="{{ product.id }}">
                         <div class="panel-heading">
                             {{ product.name }}
                         </div>
@@ -27,3 +27,4 @@
             {% endfor %}
 
         </div>
+

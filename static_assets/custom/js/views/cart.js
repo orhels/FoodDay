@@ -1,16 +1,18 @@
-var cartApp = function () {
+app.CartView = Backbone.View.extend({
 
+    initialize: function(){
 
-    var updateCartWidget = function () {
+    },
+
+    render: function(){
         $.get(cartWidgetUrl, function (data) {
             $('#cart-widget-container').html(data);
         })
-    }
+    },
 
-    var addToCart = function (event) {
+    addToCart: function (event) {
         data = {'product_id': $('input[name=id]').val(),
             'quantity': 1 };
-        event.preventDefault();
         var carttext = $('#carttext');
         var productImg = $('.productimg').eq(0);
         if(productImg){
@@ -31,10 +33,10 @@ var cartApp = function () {
                 'width': 1,
                 'height': 1
             }, 1000, 'easeOutCubic');
-
+            var that = this;
             $.post(cartAddUrl, data, function(){
                 setTimeout(function(){
-                    updateCartWidget();
+                    that.render();
                 }, 500); // this number should be tweaked when in prod.
             });
 
@@ -47,12 +49,7 @@ var cartApp = function () {
         }
     }
 
+});
 
-    // Add event listener to "kjøp"-knapp (if it exists)
-    $('#buy-product-btn').on('click', addToCart);
 
-    // Load cart widget
-    updateCartWidget();
 
-}
-cartApp();

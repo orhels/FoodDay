@@ -1,3 +1,19 @@
+var app = {
+    collections: {},
+    models: {},
+    views: {},
+
+    initialize: function(){
+        app.router = new app.Router();
+        Backbone.history.start();
+    }
+}
+
+$(document).ready(function(){
+    app.initialize();
+})
+
+
 var csrftoken = $.cookie('csrftoken');
     function csrfSafeMethod(method) {
         // these HTTP methods do not require CSRF protection
@@ -11,8 +27,3 @@ var csrftoken = $.cookie('csrftoken');
             }
         }
     });
-
-
-if(Sidebar !== undefined){
-    Sidebar.init();
-}
