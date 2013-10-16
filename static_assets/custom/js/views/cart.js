@@ -13,7 +13,6 @@ app.CartView = Backbone.View.extend({
     addToCart: function (event) {
         data = {'product_id': $('input[name=id]').val(),
             'quantity': 1 };
-        event.preventDefault();
         var carttext = $('#carttext');
         var productImg = $('.productimg').eq(0);
         if(productImg){
@@ -34,10 +33,10 @@ app.CartView = Backbone.View.extend({
                 'width': 1,
                 'height': 1
             }, 1000, 'easeOutCubic');
-
+            var that = this;
             $.post(cartAddUrl, data, function(){
                 setTimeout(function(){
-                    updateCartWidget();
+                    that.render();
                 }, 500); // this number should be tweaked when in prod.
             });
 

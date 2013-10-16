@@ -4,7 +4,7 @@
 app.ProductView = Backbone.View.extend({
 
     events: {
-        'click $buy-product-button': 'addToCart'
+        'click #buy-product-btn': 'addToCart'
     },
 
     initialize: function(options){
@@ -19,7 +19,13 @@ app.ProductView = Backbone.View.extend({
         return this;
     },
 
+    remove: function(){
+        this.undelegateEvents();
+        this.$el.empty();
+    },
+
     addToCart: function(){
+        console.log("product -> addToCart")
         app.cartView.addToCart();
     }
 });

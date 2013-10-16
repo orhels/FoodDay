@@ -14,7 +14,7 @@
                 <ul>
                     {% for product_subcategory in product_category.children.all %}
                         <li>
-                            <div class="sidebar-subcat" data-product_cat_id="{{ product_subcategory.id }}" href="/product-category/{{ product_subcategory.id }}">
+                            <div class="sidebar-subcat" data-product_cat_id="{{ product_subcategory.id }}" href="#{% url 'product_category_detail' product_category.id %}" >
                                 <a href="#/product-category/{{ product_subcategory.id }}">{{ product_subcategory.name }}</a>
                             </div>
                         </li>

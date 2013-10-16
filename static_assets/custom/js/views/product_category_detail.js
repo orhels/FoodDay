@@ -9,8 +9,8 @@ app.ProductCategoryDetailView = Backbone.View.extend({
     },
 
     initialize: function(options){
-        console.log(options);
         this.pcid = options.pcid;
+        this.router = options.router;
         return this;
     },
 
@@ -23,15 +23,13 @@ app.ProductCategoryDetailView = Backbone.View.extend({
     },
 
     remove: function(){
-        $('body').trigger('destroy_view');
+        this.undelegateEvents();
         this.$el.empty();
     },
 
     loadProduct: function(event){
-        console.log(event);
-        this.undelegateEvents();
-        this.remove();
-
+        pid = event.currentTarget.dataset.product_id;
+        this.router.navigate('//product/'+pid);
     }
 
 

@@ -5,7 +5,7 @@
 app.Router = Backbone.Router.extend({
    routes:{
        "product-category/:pcid" : "product_category",
-       "product/:pid" : "product"
+       "product/:pid" : "product_detail"
    },
 
    initialize: function(){
@@ -23,7 +23,11 @@ app.Router = Backbone.Router.extend({
    },
 
    product_category: function(pcid){
-       app.productCategoryView = new app.ProductCategoryDetailView({
+       console.log("route -> product_category");
+       if (this.activeView){
+           this.activeView.remove();
+       }
+       app.productCategoryView = this.activeView = new app.ProductCategoryDetailView({
            el: "#main-content",
            router: this,
            pcid: pcid
@@ -32,13 +36,16 @@ app.Router = Backbone.Router.extend({
 
    },
 
-   product: function(pid){
-       console.log("hei");
-       app.productView = new app.ProductView({
+   product_detail: function(pid){
+       console.log("route -> product");
+       if (this.activeView){
+           this.activeView.remove();
+       }
+       app.productView = this.activeView = new app.ProductView({
            el: "#main-content",
            router: this,
            pid: pid
-       })
+       });
        app.productView.render();
    }
 });
