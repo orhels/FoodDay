@@ -22,4 +22,5 @@ DATABASES = {
 # Defines the fixtures dir
 FIXTURE_DIRS = (
     'Products/fixtures',
+    'Recipes/fixtures'
 )

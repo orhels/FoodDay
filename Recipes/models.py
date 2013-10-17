@@ -6,6 +6,7 @@ from Products.models import Product
 class Recipe(models.Model):
     #Fields
     name = models.CharField(max_length=300)
+    description = models.TextField()
     procedure = models.TextField()
     servings = models.IntegerField()
     processing_time = models.CharField(max_length=50)
@@ -32,15 +33,12 @@ class Ingredient(models.Model):
     recipe = models.ForeignKey(Recipe)
 
     def __unicode__(self):
-        self.name
+        return self.name
 
 
 class RecipeCategory(models.Model):
     #Fields
     name = models.CharField(max_length=150)
 
-    #Relations
-    parents = models.ManyToManyField('self', blank=True, null=True, symmetrical=False, related_name='children')
-
     def __unicode__(self):
-        self.name
+        return self.name

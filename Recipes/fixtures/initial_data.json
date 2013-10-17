@@ -1,0 +1,79 @@
+[
+    {
+        "pk": 1,
+        "model": "Recipes.recipe",
+        "fields": {
+            "name": "Club sandwich",
+            "processing_time": "20 min",
+            "image": "recipe_images/Club-sandwich-Detalj-normal-1635-19.jpg",
+            "recipe_categories": [
+                2,
+                3
+            ],
+            "servings": 1,
+            "procedure": "1. Stek kalkunbiff i skiver i olje i en panne/ på grill, 2-3 minutter på hver side. Krydre med salt og pepper.\r\n\r\n2. Rist brødskiver lett i en en panne/ på grill. Smør skivene med majones og sennep. \r\n\r\n3. Legg kalkun, salat, tomat, rødløk, sylteagurk og brød lagvis.\r\n\r\n4. Tre to spyd gjennom skivene og del sandwichen på midten.",
+            "description": "Club sandwich er en lunsjklassiker. Stekt kalkunfilet, sprø salat og frisk tomat gir to lag deilig pålegg mellom tre skiver."
+        }
+    },
+    {
+        "pk": 2,
+        "model": "Recipes.recipe",
+        "fields": {
+            "name": "Kjøttboller med rotgrønnsaker",
+            "processing_time": "Under 20 min",
+            "image": "recipe_images/Kjottboller-med-rotgronnsaker-Detalj-normal-3233-12.jpg",
+            "recipe_categories": [
+                1,
+                3
+            ],
+            "servings": 1,
+            "procedure": "1. Bland sammen løk, kjøttdeig og krydder i en bolle. Bruk en spiseskje og ”grav” ut små kjøttboller. Stek dem i en stekepanne med margarin eller olje til de er gjennomstekte. \r\n\r\n2. Smelt margarin i en kjele og ha i lapskausblandingen. Vend inn mel, kruspersille og ha i melken. La det småkoke under omrøring i 10 minutter. Smak til med salt.",
+            "description": "Kjøttbollene er kjempeenkle å lage, men hemmeligheten ligger i tilbehøret. De persillestuede rotgrønnsakene er enkle å lage og passer til nesten alt. Du trenger ikke noe saus i tillegg."
+        }
+    },
+    {
+        "pk": 1,
+        "model": "Recipes.ingredient",
+        "fields": {
+            "product": 4,
+            "name": "Kyllingfilet",
+            "recipe": 1,
+            "quantityText": "gram",
+            "is_main_ingredient": true,
+            "quantity": "100"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "Recipes.ingredient",
+        "fields": {
+            "product": 9,
+            "name": "Kjøttdeig av sving",
+            "recipe": 2,
+            "quantityText": "gram",
+            "is_main_ingredient": true,
+            "quantity": "100"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "name": "Sunn"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "name": "Rask"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "name": "Enkel"
+        }
+    }
+]
