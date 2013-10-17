@@ -27,9 +27,7 @@ app.Router = Backbone.Router.extend({
    {
        console.log("router -> products");
 
-       if (this.sidebarView){
-           this.sidebarView.remove();
-       }
+       if (this.sidebarView) this.sidebarView.remove();
        this.sidebarView = new app.ProductSidebarView({
            el: "#sidebar",
            router: this
@@ -45,10 +43,7 @@ app.Router = Backbone.Router.extend({
 
    recipes: function(){
        console.log("router -> recipes")
-       if (this.sidebarView){
-           this.sidebarView.remove();
-       }
-
+       if (this.sidebarView) this.sidebarView.remove();
 
        app.cartView = this.cartView = new app.CartView({
            el: "#cart-widget-container",
