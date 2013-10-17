@@ -1,0 +1,24 @@
+<h3 class="text-center">{{ recipecategory.name }}</h3>
+<div class="row">
+    {% for recipe in recipecategory.recipes.all %}
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <a class="recipe-link" data-recipe_id="{{ recipe.id }}" href="#/recipe/{{ recipe.id }}" onclick="return false;">
+                <div class="panel panel-success recipepanel">
+                <div class="panel-heading">
+                    {{ recipe.name }}
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-6 col-lg-6">
+                            <img src="{{ recipe.image.url }}" class="img-responsive center-block"/>
+                        </div>
+                        <div class="col-xs-6 col-md-6 col-lg-6">
+                            {{ recipe.description }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>

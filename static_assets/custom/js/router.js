@@ -8,7 +8,9 @@ app.Router = Backbone.Router.extend({
        "products" : "products",
        "recipes" : "recipes",
        "product-category/:pcid" : "product_category",
-       "product/:pid" : "product_detail"
+       "product/:pid" : "product_detail",
+       "recipe-category/:rcid" : "recipe_category",
+       "recipe/:rid" : "recipe_detail"
    },
 
    initialize: function(){
@@ -20,12 +22,17 @@ app.Router = Backbone.Router.extend({
        if (this.activeView) this.activeView.remove();
        if (this.sidebarView) this.sidebarView.remove();
        if (this.cartView) this.cartView.remove();
-
+       this.frontpageView = new app.FrontpageView({
+           el: "#frontpage",
+           router: this
+       })
+       this.frontpageView.render();
    },
 
    products: function()
    {
        console.log("router -> products");
+       if (this.frontpageView) this.frontpageView.remove();
 
        if (this.sidebarView) this.sidebarView.remove();
        this.sidebarView = new app.ProductSidebarView({
@@ -43,7 +50,14 @@ app.Router = Backbone.Router.extend({
 
    recipes: function(){
        console.log("router -> recipes")
+       if (this.frontpageView) this.frontpageView.remove();
        if (this.sidebarView) this.sidebarView.remove();
+
+       this.sidebarView = new app.RecipeSidebarView({
+           el: "#sidebar",
+           router: this
+       });
+       this.sidebarView.render();
 
        app.cartView = this.cartView = new app.CartView({
            el: "#cart-widget-container",
@@ -53,27 +67,53 @@ app.Router = Backbone.Router.extend({
    },
 
    product_category: function(pcid){
-       if (this.activeView){
-           this.activeView.remove();
-       }
-       app.productCategoryView = this.activeView = new app.ProductCategoryDetailView({
+       console.log("router -> product_category")
+       if (this.activeView) this.activeView.remove();
+       if (!(this.sidebarView || this.cartView)) this.products();
+       this.activeView = new app.ProductCategoryDetailView({
            el: "#main-content",
            router: this,
            pcid: pcid
        });
-       app.productCategoryView.render();
+       this.activeView.render();
 
    },
 
    product_detail: function(pid){
-       if (this.activeView){
-           this.activeView.remove();
-       }
-       app.productView = this.activeView = new app.ProductView({
+       if (this.activeView) this.activeView.remove();
+       if (!(this.sidebarView || this.cartView)) this.products();
+
+       this.activeView = new app.ProductView({
            el: "#main-content",
            router: this,
            pid: pid
        });
-       app.productView.render();
+       this.activeView.render();
+   },
+
+   recipe_category: function(rcid){
+       console.log("router -> recipe_category")
+       if (this.activeView) this.activeView.remove();
+       if (!(this.sidebarView || this.cartView)) this.recipes();
+
+       this.activeView = new app.RecipeCategoryDetailView({
+           el: "#main-content",
+           router: this,
+           rcid: rcid
+       });
+       this.activeView.render();
+   },
+
+   recipe_detail: function(rid){
+       console.log("router -> recipe_detail");
+       if (this.activeView) this.activeView.remove();
+       if (!(this.sidebarView || this.cartView)) this.recipes();
+
+       this.activeView = new app.RecipeView({
+           el: "#main-content",
+           router: this,
+           rid: rid
+       });
+       this.activeView.render();
    }
 });

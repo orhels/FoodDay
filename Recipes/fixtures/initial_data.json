@@ -48,7 +48,7 @@
         "model": "Recipes.ingredient",
         "fields": {
             "product": 9,
-            "name": "Kjøttdeig av sving",
+            "name": "Kjøttdeig av svin",
             "recipe": 2,
             "quantityText": "gram",
             "is_main_ingredient": true,

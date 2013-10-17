@@ -1,40 +1,37 @@
+<h3 class="text-center">{{ product.name }} {{ product.mass }}{{ product.massUnit }}</h3>
 
 
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-lg-12">
+        <img height="326" width="100" src="{{ product.image.url }}" class="img-responsive center-block productimg"/>
+    </div>
+</div>
 
-            <h3 class="text-center">{{ product.name }} {{ product.mass }}{{ product.massUnit }}</h3>
+<div class="row">
+    <div class="col-xs-9 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
+        <h4 class="text-right">fra {{ product.producer }}</h4>
+    </div>
+</div>
 
+<div class="row">
+    <div class="col-xs-6 col-sm-offset-4 col-sm-2 col-md-offset-4 col-md-2 col-lg-offset-4 col-lg-2 text-right">
+            <h3>{{ product.pretty_price }}</h3>
+            <h6>{{ product.pretty_price_per_mass }}</h6>
+    </div>
+    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
+            <button id="buy-product-btn" type="button" class="btn btn-success btn-lg custom-btn-big">Kjøp</button>
+    </div>
+</div>
 
-            <div class="row">
-                <div class="col-xs-12 col-md-12 col-lg-12">
-                    <img height="326" width="100" src="{{ product.image.url }}" class="img-responsive center-block productimg"/>
-                </div>
+<div class="row big-top-margins">
+    <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>{{ product.description }}</p>
             </div>
+        </div>
+    </div>
+</div>
 
-            <div class="row">
-                <div class="col-xs-9 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
-                    <h4 class="text-right">fra {{ product.producer }}</h4>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-6 col-sm-offset-4 col-sm-2 col-md-offset-4 col-md-2 col-lg-offset-4 col-lg-2 text-right">
-                        <h3>{{ product.pretty_price }}</h3>
-                        <h6>{{ product.pretty_price_per_mass }}</h6>
-                </div>
-                <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-                        <button id="buy-product-btn" type="button" class="btn btn-success btn-lg custom-btn-big">Kjøp</button>
-                </div>
-            </div>
-
-            <div class="row big-top-margins">
-                <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <p>{{ product.description }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <input type="hidden" name="id" value="{{ product.id }}" />
-            <input type="hidden" name="csrftoken" value="{% csrf_token %}" />
+<input type="hidden" name="id" value="{{ product.id }}" />
+<input type="hidden" name="csrftoken" value="{% csrf_token %}" />

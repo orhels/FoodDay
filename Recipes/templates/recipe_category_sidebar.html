@@ -1,0 +1,10 @@
+<h3 class="text-center">Oppskrifter</h3>
+<div class="panel-group" id="sidebar">
+    {% for recipe_category in recipe_category_list %}
+        <div class="panel-success">
+            <div class="panel-heading">
+                <h4 class="panel-title"><a href="#/recipe-category/{{ recipe_category.id }}"> {{ recipe_category.name }} </a></h4>
+            </div>
+        </div>
+    {% endfor %}
+</div>

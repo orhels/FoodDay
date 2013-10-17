@@ -28,7 +28,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#{% url 'frontpage' %}">FooDay</a>
+        <a class="navbar-brand" href="#">FooDay</a>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
@@ -39,17 +39,23 @@
 </nav>
 
 <div class="row">
-    <div class="col-sm-2 col-md-2 col-lg-2">
+    <div id="frontpage">
 
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2 col-md-2 col-lg-2">
         <div id="sidebar">
 
         </div>
     </div>
-    <div id="main-content" class="col-sm-7 col-md-7 col-lg-7">
+    <div class="col-sm-7 col-md-7 col-lg-7">
+        <div id="main-content">
 
+        </div>
     </div>
     <div class="col-sm-3 col-md-3 col-lg-3">
-
         <div id="cart-widget-container">
 
         </div>
@@ -59,7 +65,6 @@
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div id="footer">
-
         </div>
     </div>
 </div>
@@ -71,16 +76,17 @@
 <script src="{% static 'custom/js/lib/underscore.js' %}"></script>
 <script src="{% static 'custom/js/lib/backbone.js' %}"></script>
 <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-<script>
-    var cartWidgetUrl = "{% url 'cart_widget' %}";
-    var cartAddUrl = "{% url 'cart_add' %}";
-</script>
+
 <script src="{% static 'custom/js/application.js' %}"></script>
 <script src="{% static 'custom/js/router.js' %}"></script>
 <script src="{% static 'custom/js/views/cart_view.js' %}"></script>
 <script src="{% static 'custom/js/views/product_sidebar_view.js' %}"></script>
 <script src="{% static 'custom/js/views/product_category_detail_view.js' %}"></script>
 <script src="{% static 'custom/js/views/product_view.js' %}"></script>
+<script src="{% static 'custom/js/views/recipe_sidebar_view.js' %}"></script>
+<script src="{% static 'custom/js/views/recipe_category_detail_view.js' %}"></script>
+<script src="{% static 'custom/js/views/recipe_view.js' %}"></script>
+<script src="{% static 'custom/js/views/frontpage_view.js' %}"></script>
 {% block scripts %}{% endblock scripts %}
 
 </body>

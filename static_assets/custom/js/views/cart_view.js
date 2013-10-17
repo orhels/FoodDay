@@ -5,7 +5,7 @@ app.CartView = Backbone.View.extend({
     },
 
     render: function(){
-        $.get(cartWidgetUrl, function (data) {
+        $.get("cart/widget/", function (data) {
             $('#cart-widget-container').html(data);
         })
     },
@@ -38,7 +38,7 @@ app.CartView = Backbone.View.extend({
                 'height': 1
             }, 1000, 'easeOutCubic');
             var that = this;
-            $.post(cartAddUrl, data, function(){
+            $.post("cart/add/", data, function(){
                 setTimeout(function(){
                     that.render();
                 }, 500); // this number should be tweaked when in prod.

@@ -1,0 +1,52 @@
+<h3 class="text-center">{{ recipe.name }}</h3>
+
+<div class="row">
+    <div class="col-xs-8 col-md-8 col-lg-8">
+        <img src="{{ recipe.image.url }}" class="img-responsive center-block productimg"/>
+    </div>
+    <div class="col-xs-4 col-md-4 col-lg-4">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+                <h5><span class="glyphicon glyphicon-time"></span> {{ recipe.processing_time }}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+                <h5><span class="glyphicon glyphicon-font"></span> {{ recipe.description }}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+                <h5><span class="glyphicon glyphicon-th-list"></span></h5>
+                <ul>
+                {% for ingredient in recipe.ingredient_set.all %}
+                    <li>{{ ingredient.name }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row big-top-margins">
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>{{ recipe.procedure }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
+        Produkter med i denne oppskriften:
+        <ul>
+            {% for ingredient in recipe.ingredient_set.all %}
+                <li> <a href="#/product/{{ ingredient.product.id }}">{{ ingredient.product.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
