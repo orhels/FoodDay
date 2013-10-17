@@ -25,7 +25,6 @@ app.ProductView = Backbone.View.extend({
     },
 
     addToCart: function(){
-        console.log("product -> addToCart")
         app.cartView.addToCart();
     }
 });
