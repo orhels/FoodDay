@@ -10,6 +10,10 @@ app.CartView = Backbone.View.extend({
         })
     },
 
+    remove: function(){
+        this.$el.empty();
+    },
+
     addToCart: function (event) {
         data = {'product_id': $('input[name=id]').val(),
             'quantity': 1 };

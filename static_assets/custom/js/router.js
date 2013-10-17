@@ -4,16 +4,51 @@
 
 app.Router = Backbone.Router.extend({
    routes:{
+       "" : "frontpage",
+       "products" : "products",
+       "recipes" : "recipes",
        "product-category/:pcid" : "product_category",
        "product/:pid" : "product_detail"
    },
 
    initialize: function(){
-       app.sidebarView = this.sidebarView = new app.SidebarView({
+
+   },
+
+   frontpage: function(){
+       console.log("router -> frontpage")
+       if (this.activeView) this.activeView.remove();
+       if (this.sidebarView) this.sidebarView.remove();
+       if (this.cartView) this.cartView.remove();
+
+   },
+
+   products: function()
+   {
+       console.log("router -> products");
+
+       if (this.sidebarView){
+           this.sidebarView.remove();
+       }
+       this.sidebarView = new app.ProductSidebarView({
            el: "#sidebar",
            router: this
        });
-       app.sidebarView.render();
+       this.sidebarView.render();
+
+       app.cartView = this.cartView = new app.CartView({
+           el: "#cart-widget-container",
+           router: this
+       });
+       app.cartView.render();
+   },
+
+   recipes: function(){
+       console.log("router -> recipes")
+       if (this.sidebarView){
+           this.sidebarView.remove();
+       }
+
 
        app.cartView = this.cartView = new app.CartView({
            el: "#cart-widget-container",

@@ -19,3 +19,7 @@ div#cart-widget-container{
 body, html, h2, h3 {
     font-family: 'Open Sans', sans-serif;
 }
+
+.cart-btn{
+    color: #3e8f3e;
+}

@@ -28,26 +28,38 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{% url 'frontpage' %}">FooDay</a>
+        <a class="navbar-brand" href="#{% url 'frontpage' %}">FooDay</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <li class=""><a href="#/products">Daglivarer</a></li>
+            <li class=""><a href="#/recipes">Oppskrifter</a></li>
+        </ul>
     </div>
 </nav>
 
 <div class="row">
     <div class="col-sm-2 col-md-2 col-lg-2">
-        <h3 class="text-center">Dagligvarer</h3>
 
         <div id="sidebar">
 
         </div>
     </div>
-    <div id="main-content" class="col-sm-6 col-md-6 col-lg-6">
-        {% block content %}{% endblock %}
+    <div id="main-content" class="col-sm-7 col-md-7 col-lg-7">
+
     </div>
-    <div class="col-sm-4 col-md-4 col-lg-4">
-        <h3 id="carttext" class="text-center">Handlekurv </h3>
+    <div class="col-sm-3 col-md-3 col-lg-3">
 
         <div id="cart-widget-container">
-            Laster handlekurv...
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div id="footer">
+
         </div>
     </div>
 </div>
@@ -65,10 +77,10 @@
 </script>
 <script src="{% static 'custom/js/application.js' %}"></script>
 <script src="{% static 'custom/js/router.js' %}"></script>
-<script src="{% static 'custom/js/views/cart.js' %}"></script>
-<script src="{% static 'custom/js/views/sidebar.js' %}"></script>
-<script src="{% static 'custom/js/views/product_category_detail.js' %}"></script>
-<script src="{% static 'custom/js/views/product.js' %}"></script>
+<script src="{% static 'custom/js/views/cart_view.js' %}"></script>
+<script src="{% static 'custom/js/views/product_sidebar_view.js' %}"></script>
+<script src="{% static 'custom/js/views/product_category_detail_view.js' %}"></script>
+<script src="{% static 'custom/js/views/product_view.js' %}"></script>
 {% block scripts %}{% endblock scripts %}
 
 </body>

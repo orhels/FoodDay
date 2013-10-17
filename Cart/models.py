@@ -68,8 +68,11 @@ class CartItem(models.Model):
     quantity = models.PositiveIntegerField()
 
     def __unicode__(self):
+        return u'{product}'.format(product=self.product.name)
+        """
         if self.quantity > 1:
             return u'{quantity} stk. {product}'.format(quantity=self.quantity,
                                                        product=self.product.name)
         else:
             return u'{product}'.format(product=self.product.name)
+        """
