@@ -1,7 +1,7 @@
 __author__ = 'orjan'
 
 from django.contrib import admin
-from Recipies.models import Recipe, Ingredient, RecipeCategory
+from Recipes.models import Recipe, Ingredient, RecipeCategory
 
 
 class IngredientInline(admin.TabularInline):

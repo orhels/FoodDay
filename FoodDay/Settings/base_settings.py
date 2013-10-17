@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'FoodDay.wsgi.application'
 TEMPLATE_DIRS = (BASE_DIR.child('templates'),
                  BASE_DIR.child('Misc').child('templates'),
                  BASE_DIR.child('Products').child('templates'),
-                 BASE_DIR.child('Recipies').child('templates'),)
+                 BASE_DIR.child('Recipes').child('templates'),)
 
 
 INSTALLED_APPS = (
@@ -112,7 +112,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'Recipies',
+    'Recipes',
     'Products',
     'Cart',
 )
