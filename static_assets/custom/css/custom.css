@@ -8,6 +8,10 @@
     margin-top: 40px;
 }
 
+.small-top-margins{
+    margin-top: 10px;
+}
+
 div#cart-widget-container{
     padding-right: 10px;
 }
