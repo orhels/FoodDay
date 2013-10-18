@@ -16,13 +16,21 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-xs-2 col-md-2 col-lg-4">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    <input id="servings" class="form-control" value="{{ recipe.servings }}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-xs-12 col-md-12 col-lg-12">
                 <h5><span class="glyphicon glyphicon-th-list"></span></h5>
-                <ul>
+
                 {% for ingredient in recipe.ingredient_set.all %}
-                    <li>{{ ingredient.name }}</li>
+                    {{ ingredient.quantity }} {{ ingredient.quantityText }} {{ ingredient.name }} <br>
                 {% endfor %}
-                </ul>
+
             </div>
         </div>
     </div>
