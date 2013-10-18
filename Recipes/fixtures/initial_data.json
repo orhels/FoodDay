@@ -32,6 +32,22 @@
         }
     },
     {
+        "pk": 3,
+        "model": "Recipes.recipe",
+        "fields": {
+            "name": "Kyllinglår med byggris og grillet paprika",
+            "processing_time": "Under 20 min",
+            "image": "recipe_images/Kyllinglar-med-byggris-og-grillet-paprika-Detalj-normal-234626-6.jpg",
+            "recipe_categories": [
+                2,
+                3
+            ],
+            "servings": 1,
+            "procedure": "1. Legg kyllinglår i en ildfast form, og varm dem i ovn på 200 °C i 15-20 minutter. \r\n\r\n2. Kok byggris etter anvisning på pakken. \r\n\r\n3. Skjær grillet paprika i strimler og vårløk i tynne skiver.\r\n\r\n4. Ha grillet paprika og 2/3 av vårløken i en bolle sammen med den kokt byggris. Bland godt sammen og smak eventuelt til med salt og pepper.\r\n\r\n5. Bland resten av vårløken sammen med rømme, smak til med med salt og pepper.\r\n\r\nServer de varme kyllinglårene med byggrissalat og rømmedressing. ",
+            "description": "Grillede kyllinglår trenger omlag 20 minutter i ovnen for å bli gjennomvarme. I løpet av den tiden kan du gjøre mange andre ting - for eksempel lage dette deilige tilbehøret"
+        }
+    },
+    {
         "pk": 1,
         "model": "Recipes.ingredient",
         "fields": {
@@ -53,6 +69,18 @@
             "quantityText": "gram",
             "is_main_ingredient": true,
             "quantity": "100"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "Recipes.ingredient",
+        "fields": {
+            "product": 4,
+            "name": "grillet kyllinglår",
+            "recipe": 3,
+            "quantityText": "stk",
+            "is_main_ingredient": false,
+            "quantity": "1"
         }
     },
     {
