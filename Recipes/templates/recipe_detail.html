@@ -12,20 +12,34 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-md-12 col-lg-12">
-                <h5><span class="glyphicon glyphicon-time"></span> {{ recipe.processing_time }}</h5>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-2 col-md-2 col-lg-4">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                    <input id="servings" class="form-control" value="{{ recipe.servings }}">
-                </div>
+                <h5><span class="glyphicon glyphicon-time"></span><br> {{ recipe.processing_time }}</h5>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-md-12 col-lg-12">
-                <h5><span class="glyphicon glyphicon-th-list"></span></h5>
+                <h5><span class="glyphicon glyphicon-tags"></span><br>
+                    {% for category in recipe.recipe_categories.all %}
+                        {{ category }}
+                        {% if not forloop.last %}<br>
+                        {% endif %}
+                    {% endfor %}
+                </h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 col-md-4 col-lg-4">
+                <h5>
+                <span class="glyphicon glyphicon-user"></span>
+                <div class="input-group input-group-sm">
+
+                    <input id="servings" class="form-control" value="{{ recipe.servings }}">
+                </div>
+                </h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+                <h5><span class="glyphicon glyphicon-list"></span></h5>
 
                 {% for ingredient in recipe.ingredient_set.all %}
                     {{ ingredient.quantity }} {{ ingredient.quantityText }} {{ ingredient.name }} <br>
