@@ -18,8 +18,13 @@
     color: #3e8f3e;
 }
 
+#sidebar .panel-body{
+    background-color: #EDFFED;
+    padding-bottom: 0px;
+}
+
 a.sidebar-link{
-    color: #3e8f3e;
+    color: #000000;
 }
 
 div#cart-widget-container{
