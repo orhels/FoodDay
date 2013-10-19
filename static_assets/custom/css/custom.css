@@ -42,3 +42,9 @@ body, html, h2, h3 {
 .cart-btn{
     color: #3e8f3e;
 }
+
+/* Disabling responsiveness */
+.container {
+    max-width: none !important;
+    width: 1200px;
+}
