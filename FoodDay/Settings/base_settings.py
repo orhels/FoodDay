@@ -115,6 +115,7 @@ INSTALLED_APPS = (
     'Recipes',
     'Products',
     'Cart',
+    'IngredientProductMapping',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -149,3 +150,5 @@ LOGGING = {
 }
 
 I_AM_ONLY_DOING_THIS_TO_TRICK_PYCHARMS = True
+
+FIXTURE_DIRS = ('IngredientProductMapping/fixtures', )

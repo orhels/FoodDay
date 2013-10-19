@@ -6,7 +6,7 @@ from Products.models import Product, Producer, ProductCategory
 
 class ProductAdmin(admin.ModelAdmin):
     search_fields = ['name']
-    list_display = ['name', 'price', 'producer', 'mass', 'massUnit', 'description', 'vegetarian', 'vegan']
+    list_display = ['name', 'price', 'producer', 'quantity', 'quantityType', 'description']
     filter_horizontal = ['productCategories']
 
     def formfield_for_manytomany(self, db_field, request=None, **kwargs):

@@ -12,12 +12,11 @@ class IngredientInline(admin.TabularInline):
 class RecipeAdmin(admin.ModelAdmin):
     search_fields = ['name']
     list_display = ['name']
-    filter_horizontal = ['ingredients']
     inlines = [IngredientInline]
 
     def formfield_for_manytomany(self, db_field, request=None, **kwargs):
-        if db_field.name == 'ingredients':
-            kwargs['queryset'] = Ingredient.objects.all()
+        #if db_field.name == 'ingredients':
+        #    kwargs['queryset'] = Ingredient.objects.all()
         if db_field.name == 'recipe_categories':
             kwargs['queryset'] = RecipeCategory.objects.filter(children=None)
         return super(RecipeAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
