@@ -87,6 +87,9 @@
         "pk": 1,
         "model": "Recipes.recipecategory",
         "fields": {
+            "parents": [
+                4
+            ],
             "name": "Sunn"
         }
     },
@@ -94,6 +97,9 @@
         "pk": 2,
         "model": "Recipes.recipecategory",
         "fields": {
+            "parents": [
+                4
+            ],
             "name": "Rask"
         }
     },
@@ -101,7 +107,320 @@
         "pk": 3,
         "model": "Recipes.recipecategory",
         "fields": {
+            "parents": [
+                8
+            ],
             "name": "Enkel"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [],
+            "name": "Kategori"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [],
+            "name": "Type Rett"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [],
+            "name": "Råvare"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [],
+            "name": "Verdensdel"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [],
+            "name": "Vanskelighetsgrad"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                6
+            ],
+            "name": "Storfekjøtt"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                6
+            ],
+            "name": "Svinekjøtt"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                6
+            ],
+            "name": "Lammekjøtt"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                6
+            ],
+            "name": "Kylling"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                6
+            ],
+            "name": "Kalkun"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                6
+            ],
+            "name": "Reinsdyrkjøtt"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                6
+            ],
+            "name": "Fisk og skalldyr"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                6
+            ],
+            "name": "Egg"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                6
+            ],
+            "name": "Elg og annet vilt"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                6
+            ],
+            "name": "Kjøttdeig"
+        }
+    },
+    {
+        "pk": 19,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                6
+            ],
+            "name": "Pølser"
+        }
+    },
+    {
+        "pk": 20,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                6
+            ],
+            "name": "Spekemat"
+        }
+    },
+    {
+        "pk": 21,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                6
+            ],
+            "name": "Pålegg"
+        }
+    },
+    {
+        "pk": 22,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                6
+            ],
+            "name": "Kalvekjøtt"
+        }
+    },
+    {
+        "pk": 23,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                4
+            ],
+            "name": "Kos"
+        }
+    },
+    {
+        "pk": 24,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                4
+            ],
+            "name": "Gjester"
+        }
+    },
+    {
+        "pk": 25,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                4
+            ],
+            "name": "Tradisjon"
+        }
+    },
+    {
+        "pk": 26,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                4
+            ],
+            "name": "Grillmat"
+        }
+    },
+    {
+        "pk": 27,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                4
+            ],
+            "name": "Julemat"
+        }
+    },
+    {
+        "pk": 28,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                4
+            ],
+            "name": "Lammesesong"
+        }
+    },
+    {
+        "pk": 29,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                4
+            ],
+            "name": "Påskemat"
+        }
+    },
+    {
+        "pk": 30,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                5
+            ],
+            "name": "Middagsrett"
+        }
+    },
+    {
+        "pk": 31,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                5
+            ],
+            "name": "Tilbehør"
+        }
+    },
+    {
+        "pk": 32,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                5
+            ],
+            "name": "Salater"
+        }
+    },
+    {
+        "pk": 33,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                7
+            ],
+            "name": "Nord-Amerika"
+        }
+    },
+    {
+        "pk": 34,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                7
+            ],
+            "name": "Mellom-Amerika"
+        }
+    },
+    {
+        "pk": 35,
+        "model": "Recipes.recipecategory",
+        "fields": {
+            "parents": [
+                7
+            ],
+            "name": "Sør-Amerika"
         }
     }
 ]

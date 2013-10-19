@@ -8,7 +8,7 @@ app.RecipeSidebarView = Backbone.View.extend({
         var that = this;
         $.get("/recipe-category-sidebar/", function(data){
             that.$el.html(data);
-            //that.makeSidebarClickable();
+            that.makeSidebarClickable();
         });
         return this;
     },

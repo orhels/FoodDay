@@ -3,8 +3,25 @@
     {% for recipe_category in recipe_category_list %}
         <div class="panel-success">
             <div class="panel-heading">
-                <h4 class="panel-title"><a href="#/recipe-category/{{ recipe_category.id }}"> {{ recipe_category.name }} </a></h4>
+                <h4 class="panel-title">
+                    <a class="sidebar-toggle" data-toggle="collapse" data-parent="#sidebar" href="#collapse{{ recipe_category.id }}">
+                        {{ recipe_category.name }}
+                    </a>
+                </h4>
             </div>
+            <div id="collapse{{ recipe_category.id }}" class="panel-collapse collapse">
+            <div class="panel-body">
+                <ul class="sidebar-list">
+                    {% for recipe_subcategory in recipe_category.children.all %}
+                        <li>
+                            <div class="sidebar-subcat" data-recipe_cat_id="{{ recipe_subcategory.id }}">
+                                <a class="sidebar-link" href="#/recipe-category/{{ recipe_subcategory.id }}">{{ recipe_subcategory.name }}</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
         </div>
     {% endfor %}
 </div>

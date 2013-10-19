@@ -10,7 +10,7 @@ class RecipeDetailView(generic.DetailView):
 
 
 def get_recipe_sidebar_rendered(request):
-    recipe_category_list = RecipeCategory.objects.all()
+    recipe_category_list = RecipeCategory.objects.filter(parents=None).all()
     return render_to_response('recipe_category_sidebar.html', {'recipe_category_list' : recipe_category_list})
 
 

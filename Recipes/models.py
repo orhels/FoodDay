@@ -40,5 +40,8 @@ class RecipeCategory(models.Model):
     #Fields
     name = models.CharField(max_length=150)
 
+    #Relations
+    parents = models.ManyToManyField('self', blank=True, null=True, symmetrical=False, related_name='children')
+
     def __unicode__(self):
         return self.name

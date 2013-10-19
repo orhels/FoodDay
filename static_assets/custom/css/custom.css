@@ -12,6 +12,16 @@
     margin-top: 10px;
 }
 
+.sidebar-list{
+    list-style: none;
+    padding-left: 10px;
+    color: #3e8f3e;
+}
+
+a.sidebar-link{
+    color: #3e8f3e;
+}
+
 div#cart-widget-container{
     padding-right: 10px;
 }
