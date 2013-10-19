@@ -1,6 +1,6 @@
 # Create your models here.
 from django.db import models
-from Products.models import Product
+from IngredientProductMapping.models import IngredientProductMapping, QuantityType
 
 
 class Recipe(models.Model):
@@ -14,7 +14,7 @@ class Recipe(models.Model):
                               default='recipe_images/recipe_images_placeholder.png', blank=True)
 
     #Relations
-    ingredients = models.ManyToManyField(Product, through="Ingredient")
+    ingredients = models.ManyToManyField(Ingredient)
     recipe_categories = models.ManyToManyField('RecipeCategory', blank=True, null=True, related_name='recipes')
 
     def __unicode__(self):
@@ -24,13 +24,12 @@ class Recipe(models.Model):
 class Ingredient(models.Model):
     #Fields
     name = models.CharField(max_length=150)
-    quantityText = models.CharField(max_length=20)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     is_main_ingredient = models.BooleanField(default=False)
 
     #Relations
-    product = models.ForeignKey(Product, related_name="in_recipe")
-    recipe = models.ForeignKey(Recipe)
+    product = models.ForeignKey(IngredientProductMapping)
+    quantityType = models.ForeignKey(QuantityType)
 
     def __unicode__(self):
         return self.name
