@@ -17,10 +17,3 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default.
     }
 }
-
-
-# Defines the fixtures dir
-FIXTURE_DIRS = (
-    'Products/fixtures',
-    'Recipes/fixtures'
-)
