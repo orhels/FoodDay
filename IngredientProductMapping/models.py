@@ -14,16 +14,13 @@ def choose_cheapest_product(ingredient_quantity, product_list):
     #product_list = [(price per unit, id, price, quantity)]
 
     #Setup
-    cur_list_index = 0
-    reached_quantity = 0
     quantity_left = ingredient_quantity
     QUANTITY = 3
-    PRICE = 2
     ID = 1
     result = {}
 
     # 1: take as many as you can of the cheapest (lowest unit price)
-    # maybe we should check if the list is sorted?
+    # TODO: maybe we should check if the list is sorted?
     product = product_list[0]
     product_quantity = product[QUANTITY]
     product_id = product[ID]
@@ -51,6 +48,19 @@ def choose_cheapest_product(ingredient_quantity, product_list):
             else:
                 disapproved_combinations.append(comb)
 
+        # checks if all of the disapproved_combinations are worse then the best combination we have so far.
+        # If all are worse we can stop execution because it will never choose
+        # any combination where this is a subcombination, as you always add another product.
+        comb_min = 99999999999999999
+        for comb in combinations:
+            if price_of_combination(comb) < comb_min:
+                comb_min = price_of_combination(comb)
+        abort = True
+        for comb in disapproved_combinations:
+            if price_of_combination(comb) < comb_min:
+                abort = False
+        if abort:
+            break
         # if a product does not exists in the disapproved_combinations, then it must exist in every accepted combination
         # and we can exclude it from any further combinations
         combination_choices[:] = [x for x in combination_choices if product_exists_in(x, disapproved_combinations)]

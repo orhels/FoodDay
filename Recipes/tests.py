@@ -140,5 +140,15 @@ class TestRecipe(TestCase):
             {'mega pakke': 1, 'stor pakke': 2}
         )
 
+        self.assertEqual(
+            choose_cheapest_product(11701,
+                                    [
+                                        (10.0, 'mega pakke',         1000, 100),
+                                        (10.0, 'liten pakke',        10, 1),
+                                        (30.0, 'stor pakke',         300, 10)
+                                    ]),
+            {'mega pakke': 117, 'liten pakke': 1}
+        )
+
 
 
