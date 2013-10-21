@@ -1,4 +1,5 @@
 from django.db import models
+import itertools
 
 
 KILOGRAM = 'kg'
@@ -22,29 +23,70 @@ def choose_cheapest_product(ingredient_quantity, product_list):
     result = {}
 
     # 1: take as many as you can of the cheapest (lowest unit price)
-    for product in product_list:
-        #setup
-        product_quantity = product[QUANTITY]
-        product_id = product[ID]
-        #Add to cart if quantity is lower than remaining quantity
-        if product_quantity <= quantity_left:
-            number_of_products = quantity_left / product_quantity
-            quantity_left -= number_of_products * product_quantity
-            result.update({product_id: number_of_products})
-            break
+    # maybe we should check if the list is sorted?
+    product = product_list[0]
+    product_quantity = product[QUANTITY]
+    product_id = product[ID]
+    if product_quantity <= quantity_left:
+        number_of_products = quantity_left / product_quantity
+        quantity_left -= number_of_products * product_quantity
+        result.update({product_id: number_of_products})
 
+    print "Result 1: ", result
 
-    # 2: try all permutations to fill up the remaining
-    best_price = 999999999
-    best_product = None
-    for product in product_list:
-        if product[QUANTITY] >= quantity_left:
-            if product[PRICE] < best_price:
-                best_price = product[PRICE]
-                best_product = product[ID]
-    result.update({best_product: 1})
+    combinations = []
+    combination_choices = product_list
+
+    # 2: First we need to create all combinations that fulfills the required quantity, but has no "extra" products.
+    combination_length = 1
+    while combination_choices:
+        disapproved_combinations = []
+        temp_comb = itertools.combinations_with_replacement(combination_choices, combination_length)
+        for comb in temp_comb:
+            comb = list(comb)
+            # If the combination fulfills the required quantity
+            if quantity_of_combination(comb) >= quantity_left:
+                combinations.append(comb)
+            else:
+                disapproved_combinations.append(comb)
+
+        # if a product does not exists in the disapproved_combinations, then it must exist in every accepted combination
+        # and we can exclude it from any further combinations
+        combination_choices[:] = [x for x in combination_choices if product_exists_in(x, disapproved_combinations)]
+        combination_length += 1
+
+    # 3: Then we must select the best permutation
+    combinations = sorted(combinations, key=lambda combination: price_of_combination(combination))
+    for product in combinations[0]:
+        if product[ID] in result:
+            result[product[ID]] += 1
+        else:
+            result.update({product[ID]: 1})
+    print "Result", result
     return result
 
+
+def product_exists_in(product, dissaproved_combinations):
+    if not dissaproved_combinations:
+        return False
+    for comb in dissaproved_combinations:
+        if product in comb:
+            return True
+    return False
+
+
+def quantity_of_combination(perm):
+    q = 0
+    for p in perm:
+        q += p[3]
+    return q
+
+
+def price_of_combination(perm):
+    price = 0
+    for p in perm:
+        price += p[2]
+    return price
 
 class IngredientProductMapping(models.Model):
     #Fields
@@ -58,8 +100,6 @@ class IngredientProductMapping(models.Model):
             product_list.append((product.price/product_quantity, product.id, product.price, product_quantity))
         product_list.sort()
         return choose_cheapest_product(ingredient_quantity, product_list)
-
-
 
 
 class QuantityType(models.Model):
