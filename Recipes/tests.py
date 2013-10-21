@@ -89,6 +89,15 @@ class TestRecipe(TestCase):
                         ]),
             {'stor pakke': 3}
         )
+        self.assertEqual(
+            choose_cheapest_product(600,
+                                    [
+                                        (0.291, 'stor pakke',       350, 1200),
+                                        (0.333, 'liten pakke',      100,  300),
+                                        (0.375, 'mellomstor pakke', 150, 400)
+                                    ]),
+            {'liten pakke': 2}
+        )
 
     def test_choose_cheapest_product_hard(self):
         self.assertEqual(
@@ -100,5 +109,6 @@ class TestRecipe(TestCase):
                                     ]),
             {'liten pakke': 1, 'mellomstor pakke': 1}
         )
+
 
 

@@ -33,7 +33,8 @@ def choose_cheapest_product(ingredient_quantity, product_list):
         result.update({product_id: number_of_products})
 
     print "Result 1: ", result
-
+    if quantity_left == 0:
+        return result
     combinations = []
     combination_choices = product_list
 
@@ -55,7 +56,7 @@ def choose_cheapest_product(ingredient_quantity, product_list):
         combination_choices[:] = [x for x in combination_choices if product_exists_in(x, disapproved_combinations)]
         combination_length += 1
 
-    # 3: Then we must select the best permutation
+    # 3: Then we must select the best combination
     combinations = sorted(combinations, key=lambda combination: price_of_combination(combination))
     for product in combinations[0]:
         if product[ID] in result:
