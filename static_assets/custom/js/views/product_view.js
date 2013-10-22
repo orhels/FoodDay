@@ -25,6 +25,8 @@ app.ProductView = Backbone.View.extend({
     },
 
     addToCart: function(){
-        app.cartView.addToCart();
+        data = [{'product_id': $('input[name=id]').val(),
+            'quantity': 1 }];
+        app.cartView.addToCart(data);
     }
 });

@@ -1,3 +1,4 @@
+import json
 from Cart.models import Cart
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
@@ -27,8 +28,11 @@ def update_cart(request):
 
 
 def add_to_cart(request):
-    product_id = int(request.POST['product_id'])
-    quantity = int(request.POST['quantity'])
+    print request.body
+    products = json.loads(request.body)
+    product_list = []
+    for p in products:
+        product_list.append((p['product_id'], p['quantity']))
     cart = _get_or_create_cart(request)
-    cart.add(product_id, quantity)
+    cart.add(product_list)
     return HttpResponse(status=200)

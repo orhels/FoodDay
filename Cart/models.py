@@ -1,16 +1,18 @@
 from Products.models import Product
 from django.db import models
 
-
 class Cart(models.Model):
     created_at = models.DateTimeField(auto_created=True, null=True)
     last_updated = models.DateTimeField(auto_now=True)
 
-    def add(self, product_id, quantity):
-        if self._product_is_already_in_cart(product_id):
-            self._add_quantity_to_cart(product_id, quantity)
-        else:
-            self._add_product_to_cart(product_id, quantity)
+    def add(self, product_list):
+        for product in product_list:
+            product_id = product[0]
+            quantity = product[1]
+            if self._product_is_already_in_cart(product_id):
+                self._add_quantity_to_cart(product_id, quantity)
+            else:
+                self._add_product_to_cart(product_id, quantity)
 
     def set(self, product_id, quantity):
         """ Update the cart in accordance with the parameters.
@@ -69,10 +71,3 @@ class CartItem(models.Model):
 
     def __unicode__(self):
         return u'{product}'.format(product=self.product.name)
-        """
-        if self.quantity > 1:
-            return u'{quantity} stk. {product}'.format(quantity=self.quantity,
-                                                       product=self.product.name)
-        else:
-            return u'{product}'.format(product=self.product.name)
-        """

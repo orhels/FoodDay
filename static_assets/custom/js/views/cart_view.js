@@ -14,9 +14,9 @@ app.CartView = Backbone.View.extend({
         this.$el.empty();
     },
 
-    addToCart: function (event) {
-        data = {'product_id': $('input[name=id]').val(),
-            'quantity': 1 };
+    addToCart: function (data) {
+        console.log(data);
+        console.log(JSON.stringify(data));
         var carttext = $('#carttext');
         var productImg = $('.productimg').eq(0);
         if(productImg){
@@ -37,8 +37,9 @@ app.CartView = Backbone.View.extend({
                 'width': 1,
                 'height': 1
             }, 1000, 'easeOutCubic');
+
             var that = this;
-            $.post("cart/add/", data, function(){
+            $.post("cart/add/", JSON.stringify(data), function(){
                 setTimeout(function(){
                     that.render();
                 }, 500); // this number should be tweaked when in prod.
@@ -51,6 +52,14 @@ app.CartView = Backbone.View.extend({
                 $(this).detach()
             });
         }
+    },
+
+    editQuantity: function(){
+
+    },
+
+    removeItem: function() {
+
     }
 
 });

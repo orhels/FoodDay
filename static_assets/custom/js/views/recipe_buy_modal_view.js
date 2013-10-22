@@ -22,6 +22,13 @@ app.RecipeBuyModalView = Backbone.View.extend({
 
     addToCart: function(){
         console.log("Modal adding to cart");
-        app.cartView.addToCart();
+        data = [];
+        _.each($('tr.product'), function(tr){
+            var obj={};
+            obj['product_id'] = $(tr).data('product_id')
+            obj['quantity'] = $(tr).data('quantity');
+            data.push(obj);
+        });
+        app.cartView.addToCart(data);
     }
 });

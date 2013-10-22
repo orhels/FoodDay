@@ -38,12 +38,16 @@ div#cart-widget-container{
     border-top: 2px solid;
 }
 
-body, html, h2, h3 {
+body, html, h1, h2, h3 {
     font-family: 'Open Sans', sans-serif;
 }
 
 .cart-btn{
     color: #3e8f3e;
+}
+
+.cart-btn-container {
+    white-space: nowrap;
 }
 
 /* Disabling responsiveness */

@@ -103,6 +103,9 @@ class IngredientProductMapping(models.Model):
     #Fields
     name = models.CharField(max_length=150)
 
+    def __unicode__(self):
+        return self.name
+
     def get_products_for_cart(self, total_ingredient_quantity, ingredient_quantity_type):
         ingredient_quantity = int(ingredient_quantity_type.get_quantity_multiplier_converter() * total_ingredient_quantity)
         product_list = []

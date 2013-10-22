@@ -3,32 +3,25 @@
     {% for item in cart.items.all %}
         <li class="list-group-item">
             <div class="row">
-                 <div class="col-xs-2 col-md-2 col-lg-2">
-                    <img width="30" src="{{ item.product.image.url }}" class="img-thumbnail"/>
+                <div class="col-xs-2 col-md-2 col-lg-2">
+                    <img src="{{ item.product.image.url }}" class="img-responsive center-block"/>
                 </div>
-                <div class="col-xs-10 col-md-10 col-lg.10">
+                <div class="col-xs-10 col-md-10 col-lg-10">
                     <div class="row">
                         <div class="col-xs-10 col-md-10 col-lg-10">
                             {{ item }}
                         </div>
-                        <div class="col-xs-2 col-md-2 col-lg2">
-                            <button type="button" class="btn btn-link btn-xs cart-btn"><span class="glyphicon glyphicon-remove"></span></button>
-
-                        </div>
-
                     </div>
                     <div class="row">
                         <div class="col-xs-8 col-md-8 col-lg-8">
                             {{ item.quantity }} &times; {{ item.product.pretty_price }}
                         </div>
-
-                        <div class="col-xs-4 col-md-2 col-md-offset-2 col-lg-1 col-lg-offset-2">
-                            <button type="button" class="btn btn-link btn-xs cart-btn"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <div class="col-xs-4 col-md-2 col-lg-2 cart-btn-container">
+                            <button data-id="{{ item.id }}" type="button" class="btn btn-default btn-xs cart-btn cart-edit-btn"><div class="glyphicon glyphicon-pencil"></div></button>
+                            <button data-id="{{ item.id }}" type="button" class="btn btn-default btn-xs cart-btn cart-remove-btn"><span class="glyphicon glyphicon-remove"></span></button>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </li>
     {% endfor %}
