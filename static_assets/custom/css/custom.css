@@ -2,6 +2,9 @@
     width: 100px;
     height: 58px;
     margin-top: 13px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .big-top-margins{
@@ -47,4 +50,8 @@ body, html, h2, h3 {
 .container {
     max-width: none !important;
     width: 1200px;
+}
+/* Bootstrap adds a margin-right:15px when opening modal*/
+body.modal-open {
+    margin-right: 0px;
 }

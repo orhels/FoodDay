@@ -42,7 +42,7 @@ class Ingredient(models.Model):
         return self.name
 
     def get_products_for_cart(self, servings_ratio):
-        total_quantity = self.quantity * servings_ratio
+        total_quantity = float(self.quantity) * servings_ratio
         return self.productMapping.get_products_for_cart(total_quantity, self.quantityType)
 
 

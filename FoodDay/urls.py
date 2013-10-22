@@ -5,7 +5,7 @@ from django.conf.urls import patterns, include, url
 from Products.views import ProductDetailView, ProductIndexView, ProductCategoryIndexView, \
     ProducerIndexView, ProducerDetailView, product_category, get_product_sidebar_rendered
 from Misc.views import FrontPageView, BasePageView
-from Recipes.views import RecipeDetailView, get_recipe_sidebar_rendered, recipe_category
+from Recipes.views import RecipeDetailView, get_recipe_sidebar_rendered, recipe_category, buy_recipe_modal
 
 # Uncomment the next two lines to enable the admin:
 from django.conf.urls.static import static
@@ -41,6 +41,7 @@ urlpatterns = patterns('',
 
     # RECIPE
     url(r'^recipe/(?P<pk>\d+)/$', RecipeDetailView.as_view(), name='recipe_detail'),
+    url(r'^buy-recipe-modal/(?P<pk>\d+)/(?P<servings>\d+)/$', buy_recipe_modal, name='buy_recipe_modal'),
 
     # RECIPE_CATEGORY
     url(r'^recipe-category-sidebar/$', get_recipe_sidebar_rendered, name='recipe_category_sidebar'),

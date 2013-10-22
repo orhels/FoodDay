@@ -14,7 +14,7 @@ def choose_cheapest_product(ingredient_quantity, product_list):
     #product_list = [(price per unit, id, price, quantity)]
 
     #Setup
-    quantity_left = ingredient_quantity
+    quantity_left = int(ingredient_quantity)
     QUANTITY = 3
     ID = 1
     result = {}
@@ -22,14 +22,13 @@ def choose_cheapest_product(ingredient_quantity, product_list):
     # 1: take as many as you can of the cheapest (lowest unit price)
     # TODO: maybe we should check if the list is sorted?
     product = product_list[0]
-    product_quantity = product[QUANTITY]
+    product_quantity = int(product[QUANTITY])
     product_id = product[ID]
     if product_quantity <= quantity_left:
         number_of_products = quantity_left / product_quantity
         quantity_left -= number_of_products * product_quantity
         result.update({product_id: number_of_products})
 
-    print "Result 1: ", result
     if quantity_left == 0:
         return result
     combinations = []
@@ -99,14 +98,15 @@ def price_of_combination(perm):
         price += p[2]
     return price
 
+
 class IngredientProductMapping(models.Model):
     #Fields
     name = models.CharField(max_length=150)
 
     def get_products_for_cart(self, total_ingredient_quantity, ingredient_quantity_type):
-        ingredient_quantity = ingredient_quantity_type.get_quantity_multiplier_converter() * total_ingredient_quantity
+        ingredient_quantity = int(ingredient_quantity_type.get_quantity_multiplier_converter() * total_ingredient_quantity)
         product_list = []
-        for product in self.products:
+        for product in self.products.all():
             product_quantity = product.quantityType.get_quantity_multiplier_converter() * product.quantity
             product_list.append((product.price/product_quantity, product.id, product.price, product_quantity))
         product_list.sort()

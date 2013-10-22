@@ -1,5 +1,7 @@
 <h3 class="text-center">{{ recipe.name }}</h3>
 
+<div id="buy-recipe-modal"></div>
+
 <div class="row">
     <div class="col-xs-8 col-md-8 col-lg-8">
         <div class="row">
@@ -20,8 +22,8 @@
             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
                 Produkter med i denne oppskriften:
                 <ul>
-                    {% for ingredient in recipe.ingredient_set.all %}
-                        <li> <a href="#/product/{{ ingredient.product.id }}">{{ ingredient.product.name }}</a></li>
+                    {% for ingredient in recipe.get_products_for_cart %}
+                        {{ ingredient }}
                     {% endfor %}
                 </ul>
             </div>
@@ -50,24 +52,25 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-4 col-md-4 col-lg-4">
+            <div class="col-xs-6 col-md-6 col-lg-6">
                 <h5>
                 <span class="glyphicon glyphicon-user"></span>
                 <div class="input-group input-group-sm">
 
-                    <input id="servings" class="form-control" value="{{ recipe.servings }}">
+                    <input id="servings" type="number" class="form-control" value="{{ recipe.servings }}">
                 </div>
                 </h5>
+            </div>
+            <div class="col-xs-6 col-md-6 col-lg-6">
+                <a data-toggle="modal" href="#" id="buy-recipe-btn" type="button" class="btn btn-success btn-lg custom-btn-big">Kjøp</a>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-md-12 col-lg-12">
                 <h5><span class="glyphicon glyphicon-list"></span></h5>
-
-                {% for ingredient in recipe.ingredient_set.all %}
-                    {{ ingredient.quantity }} {{ ingredient.quantityText }} {{ ingredient.name }} <br>
+                {% for ingredient in recipe.ingredients.all %}
+                    <span class="ingredient-quantity" data-base-quantity="{{ ingredient.quantity }}">{{ ingredient.quantity }}</span> {{ ingredient.quantityType }} {{ ingredient.name }} <br>
                 {% endfor %}
-
             </div>
         </div>
     </div>
