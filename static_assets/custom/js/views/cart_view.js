@@ -1,5 +1,9 @@
 app.CartView = Backbone.View.extend({
 
+    events: {
+        'click .cart-remove-btn': 'removeItem'
+    },
+
     initialize: function(){
 
     },
@@ -15,8 +19,6 @@ app.CartView = Backbone.View.extend({
     },
 
     addToCart: function (data) {
-        console.log(data);
-        console.log(JSON.stringify(data));
         var carttext = $('#carttext');
         var productImg = $('.productimg').eq(0);
         if(productImg){
@@ -58,8 +60,15 @@ app.CartView = Backbone.View.extend({
 
     },
 
-    removeItem: function() {
-
+    removeItem: function(event) {
+        var product_id = $(event.currentTarget).data('id');
+        var data = {'product_id': product_id, 'quantity': 0};
+        var that = this;
+        $.post('cart/update/', data, function(){
+            setTimeout(function(){
+                that.render();
+            }, 100)
+        });
     }
 
 });

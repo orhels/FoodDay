@@ -1,6 +1,7 @@
 from Products.models import Product
 from django.db import models
 
+
 class Cart(models.Model):
     created_at = models.DateTimeField(auto_created=True, null=True)
     last_updated = models.DateTimeField(auto_now=True)
