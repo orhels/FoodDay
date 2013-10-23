@@ -34,6 +34,14 @@ div#cart-widget-container{
     padding-right: 10px;
 }
 
+div.modal-header {
+    background-color: #DFF0D8;
+}
+
+.navbar-default {
+    background-color: #DFF0D8;
+}
+
 .total-line{
     border-top: 2px solid;
 }

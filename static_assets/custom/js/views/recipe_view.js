@@ -16,7 +16,7 @@ app.RecipeView = Backbone.View.extend({
         $.get("/recipe/" + that.rid, function(data){
             that.$el.html(data);
             $('#servings').on('change', function(){
-                if ($('#servings').val() == 0){
+                if ($('#servings').val() <= 0){
                     $('#servings').val(1);
                 }
                 _.each($('.ingredient-quantity'), function(quantity){

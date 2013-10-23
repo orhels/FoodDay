@@ -1,7 +1,8 @@
 app.CartView = Backbone.View.extend({
 
     events: {
-        'click .cart-remove-btn': 'removeItem'
+        'click .cart-remove-btn': 'removeItem',
+        'click .cart-edit-btn': 'editQuantity'
     },
 
     initialize: function(){
@@ -56,8 +57,22 @@ app.CartView = Backbone.View.extend({
         }
     },
 
-    editQuantity: function(){
-
+    editQuantity: function(event){
+        var product_id = $(event.currentTarget).data('id');
+        var temp = $('#quantity'+product_id)[0];
+        var currentQuantity = parseInt($(temp).html());
+        console.log(currentQuantity);
+        var that = this;
+        $('#quantity'+product_id).html("<div class=\"input-group input-group-sm\"><input id=\"quantity_change"+product_id+"\" type=\"number\" class=\"input-sm form-control\" value=\""+ currentQuantity + "\"></div>");
+        $('#quantity_change'+product_id).on('change', function(){
+            var newQuantity = $('#quantity_change'+product_id).val();
+            var data = {'product_id': product_id, 'quantity': newQuantity};
+            $.post('cart/update/', data, function(){
+                setTimeout(function(){
+                    that.render();
+                }, 10);
+            });
+        });
     },
 
     removeItem: function(event) {
@@ -67,7 +82,7 @@ app.CartView = Backbone.View.extend({
         $.post('cart/update/', data, function(){
             setTimeout(function(){
                 that.render();
-            }, 100)
+            }, 10)
         });
     }
 

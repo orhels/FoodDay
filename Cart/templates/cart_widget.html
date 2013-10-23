@@ -13,10 +13,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-8 col-md-8 col-lg-8">
-                            {{ item.quantity }} &times; {{ item.product.pretty_price }}
+                        <div class="col-xs-6 col-md-6 col-lg-6">
+                            <div id="quantity{{ item.product.id }}">
+                                {{ item.quantity }} &times; {{ item.product.pretty_price }}
+                            </div>
                         </div>
-                        <div class="col-xs-4 col-md-2 col-lg-2 cart-btn-container">
+                        <div class="col-xs-offset-2 col-xs-4 col-md-offset-2 col-md-4 col-lg-offset-2 col-lg-4 cart-btn-container">
                             <button data-id="{{ item.product.id }}" type="button" class="btn btn-default btn-xs cart-btn cart-edit-btn"><div class="glyphicon glyphicon-pencil"></div></button>
                             <button data-id="{{ item.product.id }}" type="button" class="btn btn-default btn-xs cart-btn cart-remove-btn"><span class="glyphicon glyphicon-remove"></span></button>
                         </div>
