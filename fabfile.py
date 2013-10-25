@@ -16,6 +16,7 @@ def deploy_to_test(run_tests="yes", debug="no"):
             _print_debug_info()
         if run_tests == "yes":
             _run_tests()
+        print "TODO: compare output from pip freeze with the current requirements.txt"
         _push_to_test()
         _restart_server()
 
@@ -44,6 +45,7 @@ def _restart_server():
             run('which python')
             run('pip install -r requirements.txt')
             run('python manage.py syncdb')
+            run('python manage.py migrate')
             run('python manage.py collectstatic')
     print "TODO: emit restart signal"
 

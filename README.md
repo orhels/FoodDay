@@ -9,7 +9,9 @@ You will need to have an instance of Postgres running on your machine, with a da
 ```createdb fooday_local -O fooday_local```
 
 
-```python manage.py syncdb```
+```export DJANGO_SETTINGS_MODULE=FoodDay.Settings.local_settings```
+```./manage.py syncdb```
+```./manage.py migrate```
 
 Run the server locally like this:
 - ```python manage.py runserver```
