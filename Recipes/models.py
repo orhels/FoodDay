@@ -32,6 +32,7 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=150)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     is_main_ingredient = models.BooleanField(default=False)
+    is_added_by_default = models.BooleanField(default=False)
 
     #Relations
     recipe = models.ForeignKey('Recipe', related_name='ingredients')
