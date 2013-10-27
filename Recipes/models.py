@@ -44,7 +44,10 @@ class Ingredient(models.Model):
 
     def get_products_for_cart(self, servings_ratio):
         total_quantity = float(self.quantity) * servings_ratio
-        return self.productMapping.get_products_for_cart(total_quantity, self.quantityType)
+        result = self.productMapping.get_products_for_cart(total_quantity, self.quantityType)
+        for k, v in result.iteritems():
+            result[k] = [v, self.is_added_by_default]
+        return result
 
 
 class RecipeCategory(models.Model):

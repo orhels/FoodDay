@@ -18,7 +18,8 @@ def choose_cheapest_product(ingredient_quantity, product_list):
     QUANTITY = 3
     ID = 1
     result = {}
-
+    if quantity_left <= 0:
+        return result
     # 1: take as many as you can of the cheapest (lowest unit price)
     # TODO: maybe we should check if the list is sorted?
     product = product_list[0]
@@ -72,7 +73,6 @@ def choose_cheapest_product(ingredient_quantity, product_list):
             result[product[ID]] += 1
         else:
             result.update({product[ID]: 1})
-    print "Result", result
     return result
 
 
@@ -126,9 +126,10 @@ class QuantityType(models.Model):
         return self.name
 
     def get_quantity_multiplier_converter(self):
-        ratios = {'KILOGRAM': 1000,
-                  'DESILITER': 100,
-                  'LITER': 1000}
+        # TODO: We should find a way to convert without using self.name
+        ratios = {'kg': 1000,
+                  'dl': 100,
+                  'l': 1000}
         return ratios.get(self.name, 1)
 
     def get_normalized_mass_unit(self, quantity):

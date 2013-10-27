@@ -24,8 +24,12 @@ def buy_recipe_modal(request, **kwargs):
     recipe = Recipe.objects.get(pk=kwargs['pk'])
     products_to_get = recipe.get_products_for_cart(int(kwargs['servings']))
     product_list = []
+    optional_product_list = []
     for k, v in products_to_get.iteritems():
-        print k
-        product_list.append((Product.objects.get(pk=k), v))
-    print product_list
-    return render_to_response('buy_recipe_modal.html', {'recipe': recipe, 'product_list': product_list})
+        if v[1]:
+            product_list.append((Product.objects.get(pk=k), v[0]))
+        else:
+            optional_product_list.append((Product.objects.get(pk=k), v[0]))
+    return render_to_response('buy_recipe_modal.html', {'recipe': recipe,
+                                                        'product_list': product_list,
+                                                        'optional_product_list': optional_product_list})

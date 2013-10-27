@@ -12,10 +12,29 @@
                         <tr>
                             <th>Produkt</th>
                             <th>Antall</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for product in product_list %}
+                            <tr class="product" data-product_id="{{ product.0.id }}" data-quantity="{{ product.1 }}">
+                                <th>{{ product.0.name }}</th>
+                                <th>{{ product.1 }}</th>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <h5>Disse varene tror vi at du har:</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Produkt</th>
+                            <th>Antall</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in optional_product_list %}
                             <tr class="product" data-product_id="{{ product.0.id }}" data-quantity="{{ product.1 }}">
                                 <th>{{ product.0.name }}</th>
                                 <th>{{ product.1 }}</th>
