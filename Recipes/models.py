@@ -11,9 +11,11 @@ class Recipe(models.Model):
     processing_time = models.CharField(max_length=50)
     image = models.ImageField(verbose_name='height 400px, width 326px', upload_to='recipe_images',
                               default='recipe_images/recipe_images_placeholder.png', blank=True)
+    url = models.URLField(max_length=400)
 
     #Relations
     recipe_categories = models.ManyToManyField('RecipeCategory', blank=True, null=True, related_name='recipes')
+    recipe_author = models.ForeignKey('RecipeAuthor', blank=True, null=True, related_name='recipes')
 
     def __unicode__(self):
         return self.name
@@ -56,6 +58,18 @@ class RecipeCategory(models.Model):
 
     #Relations
     parents = models.ManyToManyField('self', blank=True, null=True, symmetrical=False, related_name='children')
+
+    def __unicode__(self):
+        return self.name
+
+
+class RecipeAuthor(models.Model):
+    #Fields
+    name = models.CharField(max_length=150)
+    url = models.URLField(max_length=200)
+    attribution_text = models.TextField()
+
+    #Relations
 
     def __unicode__(self):
         return self.name

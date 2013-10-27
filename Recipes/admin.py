@@ -1,7 +1,7 @@
 __author__ = 'orjan'
 
 from django.contrib import admin
-from Recipes.models import Recipe, Ingredient, RecipeCategory
+from Recipes.models import Recipe, Ingredient, RecipeCategory, RecipeAuthor
 
 
 class IngredientInline(admin.TabularInline):
@@ -26,5 +26,9 @@ class RecipeCategoryAdmin(admin.ModelAdmin):
     filter_horizontal = ['parents']
 
 
+class RecipeAuthorAdmin(admin.ModelAdmin):
+    list_display = ['name', 'url']
+
 admin.site.register(Recipe, RecipeAdmin)
 admin.site.register(RecipeCategory, RecipeCategoryAdmin)
+admin.site.register(RecipeAuthor, RecipeAuthorAdmin)
