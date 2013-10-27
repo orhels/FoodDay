@@ -59,7 +59,7 @@
             <div class="col-xs-12 col-md-12 col-lg-12">
                 <h5><span class="glyphicon glyphicon-list"></span></h5>
                 {% for ingredient in recipe.ingredients.all %}
-                    <span class="ingredient-quantity" data-base-quantity="{{ ingredient.quantity }}">{{ ingredient.quantity }}</span> {{ ingredient.quantityType }} {{ ingredient.name }} <br>
+                    <span class="ingredient-quantity" data-base-quantity="{{ ingredient.quantity|floatformat }}">{{ ingredient.quantity|floatformat }}</span> {{ ingredient.quantityType }} {{ ingredient.name }} <br>
                 {% endfor %}
             </div>
         </div>

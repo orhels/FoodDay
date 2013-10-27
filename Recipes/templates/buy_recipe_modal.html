@@ -8,36 +8,48 @@
             <div class="modal-body">
                 <h5>Disse varene vil bli lagt til i handlekurven:</h5>
                 <table class="table">
+                    <colgroup>
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 80%;">
+                        <col span="1" style="width: 10%;">
+                    </colgroup>
                     <thead>
                         <tr>
+                            <th>Kjøp</th>
                             <th>Produkt</th>
                             <th>Antall</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for product in product_list %}
                             <tr class="product" data-product_id="{{ product.0.id }}" data-quantity="{{ product.1 }}">
+                                <th class="text-center"><input type="checkbox" checked> </th>
                                 <th>{{ product.0.name }}</th>
-                                <th>{{ product.1 }}</th>
+                                <th class="text-center">{{ product.1 }}</th>
                             </tr>
                         {% endfor %}
                     </tbody>
                 </table>
                 <h5>Disse varene tror vi at du har:</h5>
                 <table class="table">
+                    <colgroup>
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 80%;">
+                        <col span="1" style="width: 10%;">
+                    </colgroup>
                     <thead>
                         <tr>
+                            <th>Kjøp</th>
                             <th>Produkt</th>
                             <th>Antall</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for product in optional_product_list %}
                             <tr class="product" data-product_id="{{ product.0.id }}" data-quantity="{{ product.1 }}">
+                                <th class="text-center"><input type="checkbox"> </th>
                                 <th>{{ product.0.name }}</th>
-                                <th>{{ product.1 }}</th>
+                                <th class="text-center">{{ product.1 }}</th>
                             </tr>
                         {% endfor %}
                     </tbody>

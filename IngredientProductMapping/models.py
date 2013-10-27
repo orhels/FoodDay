@@ -126,7 +126,6 @@ class QuantityType(models.Model):
         return self.name
 
     def get_quantity_multiplier_converter(self):
-        # TODO: We should find a way to convert without using self.name
         ratios = {'kg': 1000,
                   'dl': 100,
                   'l': 1000}

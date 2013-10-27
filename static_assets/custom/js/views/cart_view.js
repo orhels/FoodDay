@@ -63,7 +63,7 @@ app.CartView = Backbone.View.extend({
         var currentQuantity = parseInt($(temp).html());
         console.log(currentQuantity);
         var that = this;
-        $('#quantity'+product_id).html("<div class=\"input-group input-group-sm\"><input id=\"quantity_change"+product_id+"\" type=\"number\" class=\"input-sm form-control\" value=\""+ currentQuantity + "\"></div>");
+        $('#quantity'+product_id).html("<div class=\"input-group input-group-sm cart-input\"><input id=\"quantity_change"+product_id+"\" type=\"number\" class=\"input-sm form-control\" value=\""+ currentQuantity + "\"></div>");
         $('#quantity_change'+product_id).on('change', function(){
             var newQuantity = $('#quantity_change'+product_id).val();
             var data = {'product_id': product_id, 'quantity': newQuantity};
