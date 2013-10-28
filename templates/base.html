@@ -40,13 +40,17 @@
                 <li class=""><a href="#/products">Daglivarer</a></li>
                 <li class=""><a href="#/recipes">Oppskrifter</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class=""><a href="#/about">Om oss</a></li>
+                <li class=""><a href="#/faq">FAQ</a></li>
+            </ul>
         </div>
     </div>
 </nav>
 
 <div class="container">
     <div class="row">
-        <div id="frontpage">
+        <div id="fullpage">
 
         </div>
     </div>
@@ -69,14 +73,11 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-            <div id="footer">
-            </div>
-        </div>
-    </div>
+    <div class="push"></div>
 
 </div>
+
+
 <script src="{% static 'custom/js/lib/jquery.1.10.2.js' %}"></script>
 <script src="{% static 'custom/js/lib/jquery.cookie.js' %}"></script>
 <script src="{% static 'custom/js/lib/jquery-ui-1.10.3.custom.js' %}"></script>
@@ -94,6 +95,9 @@
 <script src="{% static 'custom/js/views/recipe_category_detail_view.js' %}"></script>
 <script src="{% static 'custom/js/views/recipe_view.js' %}"></script>
 <script src="{% static 'custom/js/views/frontpage_view.js' %}"></script>
+<script src="{% static 'custom/js/views/about_view.js' %}"></script>
+<script src="{% static 'custom/js/views/faq_view.js' %}"></script>
+<script src="{% static 'custom/js/views/footer_view.js' %}"></script>
 <script src="{% static 'custom/js/views/recipe_buy_modal_view.js' %}"></script>
 {% block scripts %}{% endblock scripts %}
 

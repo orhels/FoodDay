@@ -42,6 +42,16 @@ body, html, h1, h2, h3 {
     font-family: 'Open Sans', sans-serif;
 }
 
+html, body {
+    height: 100%;
+}
+
+/* Footer */
+#footer, .push {
+    height: 4em;
+}
+
+
 /* CART */
 .cart-btn{
     color: #3e8f3e;
@@ -68,6 +78,10 @@ div#cart-widget-container{
 .container {
     max-width: none !important;
     width: 1200px;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -4em;
 }
 /* Bootstrap adds a margin-right:15px when opening modal*/
 body.modal-open {

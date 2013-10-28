@@ -4,7 +4,7 @@ from django.conf.urls import patterns, include, url
 
 from Products.views import ProductDetailView, ProductIndexView, ProductCategoryIndexView, \
     ProducerIndexView, ProducerDetailView, product_category, get_product_sidebar_rendered
-from Misc.views import FrontPageView, BasePageView
+from Misc.views import FrontPageView, BasePageView, AboutPageView, FooterPageView, FaqPageView
 from Recipes.views import RecipeDetailView, get_recipe_sidebar_rendered, recipe_category, buy_recipe_modal
 
 # Uncomment the next two lines to enable the admin:
@@ -16,9 +16,12 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
-    # FRONT PAGE
+    # MISC
     url(r'^$', BasePageView.as_view(), name='basepage'),
     url(r'^frontpage/', FrontPageView.as_view(), name='frontpage'),
+    url(r'^about/', AboutPageView.as_view(), name='about'),
+    url(r'^footer/', FooterPageView.as_view(), name='footer'),
+    url(r'^faq/', FaqPageView.as_view(), name='faq'),
 
     # PRODUCT
     url(r'^product/$', ProductIndexView.as_view(), name='product_list'),

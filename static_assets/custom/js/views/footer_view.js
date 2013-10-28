@@ -1,7 +1,7 @@
 /**
- * Created by orjan on 18/10/13.
+ * Created by orjan on 28/10/13.
  */
-app.FrontpageView = Backbone.View.extend({
+app.FooterView = Backbone.View.extend({
 
     initialize: function(options){
 
@@ -9,7 +9,7 @@ app.FrontpageView = Backbone.View.extend({
 
     render: function(){
         var that = this;
-        $.get("/frontpage/", function(data){
+        $.get("/footer/", function(data){
             that.$el.html(data);
         });
         return this;

@@ -5,6 +5,9 @@
 app.Router = Backbone.Router.extend({
    routes:{
        "" : "frontpage",
+       "about": "about",
+       "faq": 'faq',
+       "footer": 'footer',
        "products" : "products",
        "recipes" : "recipes",
        "product-category/:pcid" : "product_category",
@@ -18,22 +21,53 @@ app.Router = Backbone.Router.extend({
    },
 
    frontpage: function(){
-       console.log("router -> frontpage")
+       //this.footer();
        if (this.activeView) this.activeView.remove();
        if (this.sidebarView) this.sidebarView.remove();
        if (this.cartView) this.cartView.remove();
-       this.frontpageView = new app.FrontpageView({
-           el: "#frontpage",
+       this.fullpageView = new app.FrontpageView({
+           el: "#fullpage",
            router: this
        })
-       this.frontpageView.render();
+       this.fullpageView.render();
+   },
+
+   about: function(){
+       //this.footer();
+       if (this.activeView) this.activeView.remove();
+       if (this.sidebarView) this.sidebarView.remove();
+       if (this.cartView) this.cartView.remove();
+       this.fullpageView = new app.AboutView({
+           el: "#fullpage",
+           router: this
+       })
+       this.fullpageView.render();
+   },
+
+   faq: function(){
+       //this.footer();
+       if (this.activeView) this.activeView.remove();
+       if (this.sidebarView) this.sidebarView.remove();
+       if (this.cartView) this.cartView.remove();
+       this.fullpageView = new app.FaqView({
+           el: "#fullpage",
+           router: this
+       })
+       this.fullpageView.render();
+   },
+
+   footer: function(){
+       if (this.footerView) return;
+       this.footerView = new app.FooterView({
+           el: "#footer",
+           router: this
+       });
+       this.footerView.render();
    },
 
    products: function()
    {
-       console.log("router -> products");
-       if (this.frontpageView) this.frontpageView.remove();
-
+       if (this.fullpageView) this.fullpageView.remove();
        if (this.sidebarView) this.sidebarView.remove();
        this.sidebarView = new app.ProductSidebarView({
            el: "#sidebar",
@@ -49,8 +83,7 @@ app.Router = Backbone.Router.extend({
    },
 
    recipes: function(){
-       console.log("router -> recipes")
-       if (this.frontpageView) this.frontpageView.remove();
+       if (this.fullpageView) this.fullpageView.remove();
        if (this.sidebarView) this.sidebarView.remove();
 
        this.sidebarView = new app.RecipeSidebarView({
