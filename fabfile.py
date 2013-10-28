@@ -47,7 +47,10 @@ def _restart_server():
             run('python manage.py syncdb')
             run('python manage.py migrate')
             run('python manage.py collectstatic')
-    print "TODO: emit restart signal"
+        print "Restarting server signal"
+        run('sudo /home/foodaytest/app/misc/restart-fooday-test')
+
+
 
 
 def _virtualenv_has_been_activated():
