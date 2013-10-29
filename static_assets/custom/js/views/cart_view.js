@@ -21,7 +21,12 @@ app.CartView = Backbone.View.extend({
 
     addToCart: function (data) {
         var carttext = $('#carttext');
-        var productImg = $('.productimg').eq(0);
+        if($('#recipeimg').length == 1){
+            var productImg = $('#recipeimg').eq(0);
+        }
+        else{
+            var productImg = $('#productimg'+data[0].product_id).eq(0);
+        }
         if(productImg){
             var imgClone = productImg.clone().offset({
                 top: productImg.offset().top,

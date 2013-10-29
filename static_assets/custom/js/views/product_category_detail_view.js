@@ -5,7 +5,7 @@
 app.ProductCategoryDetailView = Backbone.View.extend({
 
     events:{
-        "click a.product-link": "loadProduct"
+        'click .buy-product-btn': 'addToCart'
     },
 
     initialize: function(options){
@@ -18,6 +18,16 @@ app.ProductCategoryDetailView = Backbone.View.extend({
         var that = this;
         $.get("/product-category/" + that.pcid, function(data){
             that.$el.html(data);
+            var panel = $('.productpanel');
+            //console.log(panel)
+            $.each(panel, function(index, element){
+                $(element).on('click', function(event){
+                    if (event.target.nodeName != 'BUTTON'){
+                        that.loadProduct($(element).data('product_id'))
+
+                    };
+                });
+            });
         });
         return this;
     },
@@ -27,10 +37,14 @@ app.ProductCategoryDetailView = Backbone.View.extend({
         this.$el.empty();
     },
 
-    loadProduct: function(event){
-        pid = event.currentTarget.dataset.product_id;
+    loadProduct: function(pid){
         this.router.navigate('//product/'+pid);
-    }
+    },
 
+    addToCart: function(evt){
+        var data = [{'product_id': evt.currentTarget.dataset.product_id,
+            'quantity': 1 }];
+        app.cartView.addToCart(data);
+    }
 
 });

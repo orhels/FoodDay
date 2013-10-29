@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-xs-12 col-md-12 col-lg-12">
-        <img height="326" width="100" src="{{ product.image.url }}" class="img-responsive center-block productimg"/>
+        <img height="326" width="100" id="productimg{{ product.id }}" src="{{ product.image.url }}" class="img-responsive center-block"/>
     </div>
 </div>
 
@@ -19,7 +19,7 @@
             <h6>{{ product.pretty_price_per_mass }}</h6>
     </div>
     <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-            <button id="buy-product-btn" type="button" class="btn btn-success btn-lg custom-btn-big">Kjøp</button>
+            <button type="button" data-product_id="{{ product.id }}" class="btn btn-success btn-lg custom-btn-big buy-product-btn">Kjøp</button>
     </div>
 </div>
 

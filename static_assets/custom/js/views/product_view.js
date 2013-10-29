@@ -4,7 +4,7 @@
 app.ProductView = Backbone.View.extend({
 
     events: {
-        'click #buy-product-btn': 'addToCart'
+        'click .buy-product-btn': 'addToCart'
     },
 
     initialize: function(options){
@@ -24,8 +24,8 @@ app.ProductView = Backbone.View.extend({
         this.$el.empty();
     },
 
-    addToCart: function(){
-        data = [{'product_id': $('input[name=id]').val(),
+    addToCart: function(evt){
+        var data = [{'product_id': evt.currentTarget.dataset.product_id,
             'quantity': 1 }];
         app.cartView.addToCart(data);
     }

@@ -52,6 +52,14 @@ html, body {
     overflow:hidden;
 }
 
+/* Product category */
+.panel-heading {
+    background-color: #DFF0D8;
+}
+a.product-link{
+    color: #3e8f3e;
+}
+
 
 /* Footer */
 #footer, .push {
