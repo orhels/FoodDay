@@ -46,6 +46,12 @@ html, body {
     height: 100%;
 }
 
+.product-img {
+    height: 100px;
+    width: 100px;
+}
+
+
 /* Footer */
 #footer, .push {
     height: 4em;

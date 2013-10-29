@@ -3,7 +3,7 @@
 <div class="row">
     {% for product in productcategory.products.all %}
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <a class="product-link" data-product_id="{{ product.id }}" href="#/product/{{ product.id }}" onclick="return false;">
+        <a class="product-link" data-product_id="{{ product.id }}" href="#" onclick="return false;">
             <div class="panel panel-success productpanel" data-product_id="{{ product.id }}">
                 <div class="panel-heading">
                     {{ product.name }}
@@ -11,7 +11,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-6 col-md-6 col-lg-6">
-                            <img src="{{ product.image.url }}" class="img-responsive center-block"/>
+                            <img src="{{ product.image.url }}" class="img-responsive center-block product-img"/>
                         </div>
                         <div class="col-xs-6 col-md-6 col-lg-6">
                             <h7>{{ product.producer.name }}</h7>
