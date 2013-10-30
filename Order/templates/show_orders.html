@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alle ordre</title>
+</head>
+<body>
+{% for order in orders %}
+    <div style="border: 1px solid black; margin: 10px; padding: 10px;">
+        <h3>{{ order.id }}</h3>
+
+        <p>Created: {{ order.created }}</p>
+
+        <p>epost: {{ order.email }}</p>
+
+        <p>Har fått ordrebekreftelse: {{ order.email_has_been_sent }}</p>
+
+        <p>Tlf: {{ order.phone_number }}</p>
+
+        <p>Tlf (extra): {{ order.phone_number_extra }}</p>
+
+        <p>Leveringsadresse: {{ order.shipping_address }}</p>
+
+        <ul>
+            {% for item in order.cart.items.all %}
+                <li>
+                    {{ item.quantity }}x {{ item.product.name }}
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+
+{% endfor %}
+
+</body>
+</html>

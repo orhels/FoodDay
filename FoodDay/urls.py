@@ -1,7 +1,7 @@
 from Cart.views import get_cart_widget, update_cart, add_to_cart
 from django.conf import settings
 from django.conf.urls import patterns, include, url
-from Order.views import handle_order_form
+from Order.views import handle_order_form, show_orders
 
 from Products.views import ProductDetailView, ProductIndexView, ProductCategoryIndexView, \
     ProducerIndexView, ProducerDetailView, product_category, get_product_sidebar_rendered
@@ -14,6 +14,7 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 admin.autodiscover()
+
 
 urlpatterns = patterns('',
 
@@ -52,6 +53,7 @@ urlpatterns = patterns('',
     url(r'^recipe-category/(?P<pk>\d+)/$', recipe_category, name='recipe_category_detail'),
 
     url(r'^order/$', handle_order_form, name='handle_order_form'),
+    url(r'^orders/supersecret/$', show_orders, name='show_orders'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.core.context_processors import csrf
 from Cart.models import Cart
+from Order.models import Order
 
 from .forms import OrderForm, AddressForm
 
@@ -47,3 +48,7 @@ def render(dictionary):
     return render_to_response('order_form.html',
                               dictionary)
 
+
+def show_orders(request):
+    return render_to_response('show_orders.html',
+                              {'orders': Order.objects.all()})
