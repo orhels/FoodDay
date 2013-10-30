@@ -34,6 +34,9 @@ class Product(models.Model):
     def pretty_price(self):
         return u'{price},-'.format(price=self.price)
 
+    def get_price(self):
+        return self.price
+
 
 class Producer(models.Model):
     name = models.CharField(max_length=150)

@@ -2,11 +2,12 @@ app.CartView = Backbone.View.extend({
 
     events: {
         'click .cart-remove-btn': 'removeItem',
-        'click .cart-edit-btn': 'editQuantity'
+        'click .cart-edit-btn': 'editQuantity',
+        'click #order-cart-btn': 'showOrderForm'
     },
 
-    initialize: function(){
-
+    initialize: function(options){
+        this.router = options.router;
     },
 
     render: function(){
@@ -17,6 +18,11 @@ app.CartView = Backbone.View.extend({
 
     remove: function(){
         this.$el.empty();
+    },
+
+    showOrderForm: function(event){
+        console.log('show order form');
+        this.router.navigate('//order');
     },
 
     addToCart: function (data) {

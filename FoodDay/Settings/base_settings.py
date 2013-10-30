@@ -99,7 +99,8 @@ WSGI_APPLICATION = 'FoodDay.wsgi.application'
 TEMPLATE_DIRS = (BASE_DIR.child('templates'),
                  BASE_DIR.child('Misc').child('templates'),
                  BASE_DIR.child('Products').child('templates'),
-                 BASE_DIR.child('Recipes').child('templates'),)
+                 BASE_DIR.child('Recipes').child('templates'),
+                 BASE_DIR.child('Order').child('templates'))
 
 
 INSTALLED_APPS = (
@@ -121,6 +122,7 @@ INSTALLED_APPS = (
     'Products',
     'Cart',
     'IngredientProductMapping',
+    'Order',
 
 )
 

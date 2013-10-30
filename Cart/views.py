@@ -6,7 +6,7 @@ from django.shortcuts import render_to_response
 
 def _get_or_create_cart(request):
     if request.session.has_key('cart_id'):
-        cart = Cart.objects.get(pk=request.session['cart_id'])
+        return Cart.objects.get_cart(request)
     else:
         cart = Cart()
         cart.save()

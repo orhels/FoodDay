@@ -9,5 +9,6 @@ class CartItemInline(admin.StackedInline):
 
 class CartAdmin(admin.ModelAdmin):
     inlines = [CartItemInline]
+    list_display = ('id', 'last_updated', 'belongs_to_order')
 
 admin.site.register(Cart, CartAdmin)

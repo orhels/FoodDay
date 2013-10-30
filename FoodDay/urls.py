@@ -1,6 +1,7 @@
 from Cart.views import get_cart_widget, update_cart, add_to_cart
 from django.conf import settings
 from django.conf.urls import patterns, include, url
+from Order.views import handle_order_form
 
 from Products.views import ProductDetailView, ProductIndexView, ProductCategoryIndexView, \
     ProducerIndexView, ProducerDetailView, product_category, get_product_sidebar_rendered
@@ -49,6 +50,8 @@ urlpatterns = patterns('',
     # RECIPE_CATEGORY
     url(r'^recipe-category-sidebar/$', get_recipe_sidebar_rendered, name='recipe_category_sidebar'),
     url(r'^recipe-category/(?P<pk>\d+)/$', recipe_category, name='recipe_category_detail'),
+
+    url(r'^order/$', handle_order_form, name='handle_order_form'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

@@ -1,0 +1,6 @@
+<form action="/order/" method="post">
+    {% csrf_token %}
+    {{ order_form.as_p }}
+    {{ shipping_form.as_p }}
+    <input type="submit" value="Bestill" class="btn btn-success">
+</form>

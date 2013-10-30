@@ -2,9 +2,37 @@ from Products.models import Product
 from django.db import models
 
 
+class CartManager(models.Manager):
+    def clone_cart(self, request):
+        """
+        Returns a new Cart that's a clone of the
+        cart that belongs to this session.
+        """
+        cart = Cart.objects.get_cart(request)
+        cartitems = cart.items.all()
+        cart.id = None
+        cart.save()
+        for item in cartitems:
+            item.id = None
+            item.cart = cart
+            item.save()
+        return cart
+
+    def get_cart(self, request):
+        return super(CartManager, self).get(pk=request.session['cart_id'])
+
+
 class Cart(models.Model):
     created_at = models.DateTimeField(auto_created=True, null=True)
     last_updated = models.DateTimeField(auto_now=True)
+
+    objects = CartManager()
+
+    def belongs_to_order(self):
+        if self.order.exists():
+            return self.order.get()
+        else:
+            return None
 
     def add(self, product_list):
         for product in product_list:
