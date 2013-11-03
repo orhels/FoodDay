@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.core.context_processors import csrf
@@ -21,7 +22,8 @@ def handle_order_form(request):
 
 def _render_blank_form(request):
     dictionary = csrf(request)
-    dictionary.update({'order_form': OrderForm(prefix='order_form'),
+    dictionary.update({'now': datetime.datetime.now(),
+                       'order_form': OrderForm(prefix='order_form'),
                        'shipping_form': AddressForm(prefix='shipping_form')})
     return render(dictionary)
 

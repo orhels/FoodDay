@@ -1,6 +1,11 @@
+
 <form action="/order/" method="post">
     {% csrf_token %}
+    <h3>Når vil du ha varene levert?</h3>
+    {{ now }}
+    <h3>Hvor skal varene leveres?</h3>
     {{ order_form.as_p }}
     {{ shipping_form.as_p }}
+    <p>Bestillingen sendes så snart du trykker "Bestill", men du kan kontakte oss på epost eller telefon hvis du vil gjøre endringer</p>
     <input type="submit" value="Bestill" class="btn btn-success">
 </form>
