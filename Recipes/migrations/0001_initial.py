@@ -8,6 +8,8 @@ import datetime
 
 class Migration(SchemaMigration):
 
+    depends_on = (('IngredientProductMapping', '0001_initial'), )
+
     def forwards(self, orm):
         # Adding model 'Recipe'
         db.create_table(u'Recipes_recipe', (
