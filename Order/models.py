@@ -11,6 +11,7 @@ class Order(models.Model):
     email_has_been_sent = models.BooleanField(default=False)
     shipping_cost = models.DecimalField(max_digits=4, decimal_places=2, default=0)
     cart = models.ForeignKey('Cart.Cart', related_name='order')
+    delivery_time = models.DateTimeField()
 
     def __unicode__(self):
         return u'Order {order_number} ({created} ago)'.format(order_number=self.pk,
