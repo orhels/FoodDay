@@ -5,8 +5,8 @@ from django.utils.timesince import timesince
 class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     email = models.EmailField(verbose_name='Epost')
-    phone_number = models.CharField(max_length=15)
-    phone_number_extra = models.CharField(max_length=15, blank=True, null=True)
+    phone_number = models.CharField(max_length=15, verbose_name='Telefonnummer')
+    phone_number_extra = models.CharField(max_length=15, blank=True, null=True, verbose_name='Telefonnummer 2 (valgfritt)')
     shipping_address = models.ForeignKey('Address', related_name='shippingaddress')
     email_has_been_sent = models.BooleanField(default=False)
     shipping_cost = models.DecimalField(max_digits=4, decimal_places=2, default=0)
