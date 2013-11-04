@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.core.context_processors import csrf
 from Cart.models import Cart
 from Order.models import Order
+from Order.utils import get_available_time_slots_for_delivery
 
 from .forms import OrderForm, AddressForm
 
@@ -22,7 +23,7 @@ def handle_order_form(request):
 
 def _render_blank_form(request):
     dictionary = csrf(request)
-    dictionary.update({'now': datetime.datetime.now(),
+    dictionary.update({'timeslots': get_available_time_slots_for_delivery(),
                        'order_form': OrderForm(prefix='order_form'),
                        'shipping_form': AddressForm(prefix='shipping_form')})
     return render(dictionary)
