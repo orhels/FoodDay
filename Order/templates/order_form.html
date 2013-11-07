@@ -2,24 +2,8 @@
     {% csrf_token %}
     <h3>Når vil du ha varene levert?</h3>
 
-    <div id="timeslots" class="row">
-        {% for day in timeslots.all %}
-            <div class="col-xs-4 timeslots-cell">
-                <div class="row">
-                    <div class="col-xs-12 timeslots-header">{{ day.name }} {{ day.day }}</div>
-                </div>
-                {% for timeslot in day.timeslots %}
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <input type="radio" name="timeslot" value="{{ day.pretty_date }}{{ timeslot }}" />
-                            <label>Kl. {{ timeslot.0 }} - {{ timeslot.1 }}</label>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endfor %}
+    <div id="delivery-time-selector">
     </div>
-
 
     <h3>Hvor skal varene leveres?</h3>
     {{ order_form.as_p }}
@@ -28,3 +12,4 @@
         gjøre endringer</p>
     <input type="submit" value="Bestill" class="btn btn-success">
 </form>
+

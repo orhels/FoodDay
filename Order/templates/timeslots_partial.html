@@ -1,0 +1,13 @@
+<div class="row timeslots">
+{% for day in timeslots %}
+    <div class="col-xs-2">
+    <span>{{ day.date }}</span>
+    {% for timeslot in day.timeslots %}
+        <span>
+            <input type="radio" name="timeslot" value="">
+            <label>kl. {{ timeslot.0 }}-{{ timeslot.1 }}</label>
+        </span>
+    {% endfor %}
+    </div>
+{% endfor %}
+</div>

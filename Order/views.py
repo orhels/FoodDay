@@ -1,4 +1,5 @@
 import datetime
+import json
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.core.context_processors import csrf
@@ -7,6 +8,12 @@ from Order.models import Order
 from Order.utils import get_available_time_slots_for_delivery
 
 from .forms import OrderForm, AddressForm
+
+
+def timeslots(request, skip):
+    skip = int(skip)
+    timeslots = get_available_time_slots_for_delivery(skip=skip)
+    return render_to_response('timeslots_partial.html', {'timeslots': timeslots})
 
 
 def handle_order_form(request):
@@ -23,8 +30,7 @@ def handle_order_form(request):
 
 def _render_blank_form(request):
     dictionary = csrf(request)
-    dictionary.update({'timeslots': get_available_time_slots_for_delivery(),
-                       'order_form': OrderForm(prefix='order_form'),
+    dictionary.update({'order_form': OrderForm(prefix='order_form'),
                        'shipping_form': AddressForm(prefix='shipping_form')})
     return render(dictionary)
 
