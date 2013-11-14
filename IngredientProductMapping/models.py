@@ -7,7 +7,14 @@ GRAM = 'g'
 LITER = 'l'
 DESILITER = 'dl'
 MILLILITER = 'ml'
-UNITS = ((KILOGRAM, 'kilogram'), (GRAM, 'gram'), (LITER, 'liter'), (DESILITER, 'desiliter'), (MILLILITER, 'milliliter'))
+STK = 'stk'
+UNITS = ((KILOGRAM, 'kilogram'),
+         (GRAM, 'gram'),
+         (LITER, 'liter'),
+         (DESILITER, 'desiliter'),
+         (MILLILITER, 'milliliter'),
+         (STK, 'stykk'),
+)
 
 
 def choose_cheapest_product(ingredient_quantity, product_list):
