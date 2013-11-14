@@ -1,3 +1,4 @@
+# coding=UTF-8
 from django.db import models
 from IngredientProductMapping.models import QuantityType
 
@@ -11,6 +12,10 @@ class Product(models.Model):
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(verbose_name='height 400px, width 326px', upload_to='product_images',
                               default='product_images/product_images_placeholder.png', blank=True)
+    stk = models.IntegerField(blank=True, null=True, verbose_name='Hvor mange stk. er '
+                                                                  'denne varen? (La feltet '
+                                                                  'være tomt hvis dette er irrevelevant '
+                                                                  'for denne varen.)')
 
     #Relations
     quantityType = models.ForeignKey(QuantityType)
